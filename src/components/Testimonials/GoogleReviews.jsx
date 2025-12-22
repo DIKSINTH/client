@@ -104,7 +104,7 @@ const GoogleReviews = () => {
           href="https://www.google.com/maps/place/Cady+Infotech/@9.9302196,78.0999758,17z/data=!4m8!3m7!1s0x689784a46d31942d:0x79d966eee2a01fc5!8m2!3d9.9302196!4d78.0999758!9m1!1b1!16s%2Fg%2F11vwt9jxrl?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D"
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-[#4285F4] hover:bg-blue-600 text-white px-6 py-2.5 rounded shadow-md transition-all font-medium text-sm"
+          className="bg-[#3498db] hover:bg-[#3498db] text-white px-6 py-2.5 rounded shadow-md transition-all font-medium text-sm"
         >
           Reviews us on Google
         </a>
@@ -125,7 +125,7 @@ const GoogleReviews = () => {
                 className="flex-shrink-0 px-3"
                 style={{ width: `${100 / visibleItems}%` }}
               >
-                <div className="bg-white border border-[#00AEEF] rounded-lg p-6 h-full flex flex-col items-center text-center shadow-sm min-h-[250px]">
+                <div className="bg-white border border-[#3498db] rounded-lg p-6 h-full flex flex-col items-center text-center shadow-sm min-h-[250px]">
                   <span className="text-xl font-bold text-gray-800 mb-4">
                     {review.name}
                   </span>
@@ -138,7 +138,7 @@ const GoogleReviews = () => {
                     href={review.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto text-[#00AEEF] font-bold text-sm hover:underline"
+                    className="mt-auto text-[#3498db] font-bold text-sm hover:underline"
                   >
                     View Review
                   </a>

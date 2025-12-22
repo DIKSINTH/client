@@ -67,7 +67,7 @@ const WebDesignEnd = () => {
           </p>
           <a
             href="/testimonials"
-            className="mt-6 inline-block px-8 py-3 bg-blue-500 text-white font-medium rounded-full shadow-lg hover:bg-blue-600 transition duration-300 flex items-center justify-center mx-auto w-auto"
+            className="mt-6 inline-block px-8 py-3 cady text-white font-medium rounded-full shadow-lg hover:bg-[#3498db] transition duration-300 flex items-center justify-center mx-auto w-auto"
           >
             Testimonials →
           </a>
@@ -80,7 +80,7 @@ const WebDesignEnd = () => {
           </p>
           <a
             href="/contact"
-            className="mt-6 inline-block px-8 py-3 bg-blue-500 text-white font-medium rounded-full shadow-lg hover:bg-blue-600 transition duration-300 flex items-center justify-center mx-auto w-auto"
+            className="mt-6 inline-block px-8 py-3 cady text-white font-medium rounded-full shadow-lg hover:bg-[#3498db] transition duration-300 flex items-center justify-center mx-auto w-auto"
           >
             Contact Us Today →
           </a>

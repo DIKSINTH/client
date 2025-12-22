@@ -13,7 +13,7 @@ const BlogCard = ({ post }) => {
   const imageUrl = getImagePath(post.image_url);
 
   return (
-    <Link to={`/blog/${post.id}`}>
+    <Link to={`/blog/${post.id}`} target="_blank" rel="noopener noreferrer">
       <div className="flex flex-col rounded-lg overflow-hidden shadow-lg transition duration-300 hover:shadow-xl w-full cursor-pointer">
         {/* Image */}
         <div className="w-full bg-gray-200">

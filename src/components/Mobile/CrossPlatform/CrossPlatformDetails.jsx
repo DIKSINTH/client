@@ -38,7 +38,7 @@ const techData = [
 const TechColumn = ({ title, items = [] }) => {
   return (
     <div className="w-full sm:w-1/2 lg:w-1/4 p-4">
-      <h3 className="text-xl font-bold text-blue-600 mb-6 pb-1 inline-block border-b-2 border-blue-600">
+      <h3 className="text-xl font-bold cady-text mb-6 pb-1 inline-block border-b-2 border-[#3498db]">
         {title}
       </h3>
       <ul className="tech-list space-y-2">

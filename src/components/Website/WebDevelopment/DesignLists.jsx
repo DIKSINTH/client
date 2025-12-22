@@ -44,7 +44,7 @@ const ValueCircle = ({ text, index }) => {
       whileHover={{ scale: 1.08 }}
       className="flex justify-center p-4"
     >
-      <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-[#00b0ff] flex items-center justify-center text-center p-4 shadow-xl">
+      <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full bg-[#3498db] flex items-center justify-center text-center p-4 shadow-xl">
         <p className="text-white text-xs sm:text-sm md:text-base font-semibold leading-snug">
           {displayText}
         </p>

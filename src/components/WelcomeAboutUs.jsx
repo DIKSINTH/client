@@ -70,7 +70,7 @@ const WelcomeAboutUs = () => {
           <h2 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-gray-800 leading-snug">
             Welcome to Cady Infotech
           </h2>
-          <div className="w-10 sm:w-16 h-1 bg-indigo-500 mx-auto mt-3" />
+          <div className="w-10 sm:w-16 h-1 cady mx-auto mt-3" />
         </div>
 
         {/* Image + About */}

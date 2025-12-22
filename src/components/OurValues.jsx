@@ -15,7 +15,7 @@ const Hexagon = ({ text, side }) => {
     <div
       className={`
         relative w-32 h-16 flex items-center justify-center
-        text-white font-semibold text-sm bg-[#1e88e5]
+        text-white font-semibold text-sm bg-[#3498db]
         ${side === "left" ? "mr-16 md:mr-16 sm:mr-0" : ""}
         sm:mx-auto
       `}
@@ -34,7 +34,7 @@ const TimelineItem = ({ value, index }) => {
     <li className="relative flex md:items-center py-8 sm:py-10">
       {/* MOBILE DOT */}
       <div className="absolute left-4 top-1/2 -translate-y-1/2 md:hidden">
-        <div className="w-3 h-3 rounded-full bg-[#1e88e5]" />
+        <div className="w-3 h-3 rounded-full bg-[#3498db]" />
       </div>
 
       {/* LEFT SIDE (DESKTOP) */}
@@ -46,7 +46,7 @@ const TimelineItem = ({ value, index }) => {
 
       {/* CENTER DOT (DESKTOP) */}
       <div className="hidden md:block absolute left-1/2 -translate-x-1/2 z-10">
-        <div className="w-3 h-3 rounded-full bg-[#1e88e5]" />
+        <div className="w-3 h-3 rounded-full bg-[#3498db]" />
       </div>
 
       {/* CONNECTOR LINE (DESKTOP ONLY) */}
@@ -108,7 +108,7 @@ const OurValues = () => {
       <div className="container mx-auto max-w-4xl px-4">
         {/* HEADING */}
         <div className="flex items-center justify-center mb-12">
-          <Check className="text-[#1e88e5] mr-2" />
+          <Check className="text-[#3498db] mr-2" />
           <h2 className="text-3xl font-semibold">Our Values</h2>
         </div>
 

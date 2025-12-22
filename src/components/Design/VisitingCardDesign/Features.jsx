@@ -36,7 +36,7 @@ const Features = () => {
                 {/* Green Checkmark Icon */}
                 <div className="flex-shrink-0">
                   <svg
-                    className="w-7 h-7 text-[#5CB85C]"
+                    className="w-7 h-7 text-[#3498db]"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >

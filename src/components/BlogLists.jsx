@@ -34,7 +34,7 @@ const BlogCard = ({ post }) => {
         {/* Read More (ONLY THIS CLICKS) */}
         <Link
           to={`/blog/${post.id}`}
-          className="text-indigo-600 font-semibold hover:text-indigo-800 underline underline-offset-4 transition duration-150"
+          className="text-indigo-600 font-semibold hover:text-[#3498db] underline underline-offset-4 transition duration-150"
         >
           Read More →
         </Link>
@@ -91,7 +91,7 @@ const BlogLists = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
             Recent Blogs
           </h2>
-          <div className="w-12 h-1 bg-indigo-500 mx-auto mt-3"></div>
+          <div className="w-12 h-1 cady mx-auto mt-3"></div>
         </div>
 
         {/* Blog Cards */}
@@ -103,7 +103,7 @@ const BlogLists = () => {
 
         {/* Explore More Button */}
         <div className="flex justify-center mt-12">
-          <button className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 transition">
+          <button className="px-6 py-3 cady text-white font-semibold rounded-lg shadow-md hover:bg-[#3498db]-300 transition">
             Explore More
           </button>
         </div>

@@ -78,7 +78,7 @@ const WhyIos = () => {
                   <div key={colIndex}>
                     {column.map((point, index) => (
                       <div key={index} className="flex items-start mb-2">
-                        <CheckCircle className="w-5 h-5 text-green-500 mt-1 mr-2" />
+                        <CheckCircle className="w-5 h-5 cady-text mt-1 mr-2" />
                         <p className="text-gray-700">{point}</p>
                       </div>
                     ))}

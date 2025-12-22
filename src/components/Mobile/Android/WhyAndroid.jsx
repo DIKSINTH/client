@@ -90,7 +90,7 @@ const WhyAndroid = () => {
                       key={`col1-${index}`}
                       className="flex items-start mb-2"
                     >
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-1 mr-2" />
+                      <CheckCircle className="w-5 h-5 cady-text flex-shrink-0 mt-1 mr-2" />
                       <p className="text-base text-gray-700">{point}</p>
                     </div>
                   ))}
@@ -103,7 +103,7 @@ const WhyAndroid = () => {
                       key={`col2-${index}`}
                       className="flex items-start mb-2"
                     >
-                      <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-1 mr-2" />
+                      <CheckCircle className="w-5 h-5 cady-text flex-shrink-0 mt-1 mr-2" />
                       <p className="text-base text-gray-700">{point}</p>
                     </div>
                   ))}

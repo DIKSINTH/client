@@ -14,7 +14,7 @@ export default function ViewIosDevelopment() {
 
   return (
     <DashboardLayout>
-      <h1 className="text-3xl font-bold mb-6">Android Development</h1>
+      <h1 className="text-3xl font-bold mb-6">IOS Development</h1>
 
       <div className="bg-white p-5 shadow rounded-md">
         <table className="w-full text-left">

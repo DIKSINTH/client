@@ -158,7 +158,7 @@ const BlogContent = () => {
           {/* Share */}
           <div className="text-center md:text-left">
             <p className="font-semibold mb-3">Share to your social media</p>
-            <div className="flex justify-center md:justify-start gap-4 text-blue-600 text-2xl">
+            <div className="flex justify-center md:justify-start gap-4 cady-text text-2xl">
               <a
                 href={`https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`}
                 target="_blank"
@@ -207,7 +207,7 @@ const BlogContent = () => {
               className={`flex items-center gap-2 px-5 py-2 rounded-full text-white ${
                 liked
                   ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-blue-600 hover:bg-blue-700"
+                  : "cady hover:bg-[#3498db]-700"
               }`}
             >
               <i className="fas fa-thumbs-up"></i>

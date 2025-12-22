@@ -41,7 +41,7 @@ const WhyChooseUs = () => {
                 {/* Smaller Check Icon */}
                 <div className="flex-shrink-0">
                   <svg
-                    className="w-7 h-7 md:w-8 md:h-8 text-[#38BDF8]"
+                    className="w-7 h-7 md:w-8 md:h-8 text-[#3498db]"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >

@@ -101,7 +101,7 @@ const Welcome = () => {
               "
             >
               {data.Heading}
-              <span className="text-blue-500 text-4xl sm:text-5xl md:text-6xl">
+              <span className="cady-text text-4xl sm:text-5xl md:text-6xl">
                 ♡
               </span>
             </h2>
@@ -124,7 +124,7 @@ const Welcome = () => {
             {/* HASHTAG & STARS */}
             <div className="mt-6 text-center md:text-left">
               <p className="font-semibold text-gray-800 mb-2">#cadyinfotech</p>
-              <div className="flex justify-center md:justify-start gap-2 text-blue-500 text-3xl tracking-widest">
+              <div className="flex justify-center md:justify-start gap-2 cady-text text-3xl tracking-widest">
                 ★★★★★
               </div>
             </div>

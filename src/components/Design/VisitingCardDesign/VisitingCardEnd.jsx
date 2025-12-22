@@ -20,7 +20,7 @@ const VisitingCardEnd = () => {
         </p>
 
         {/* Fixed Contact Us Today Button */}
-        <button className="bg-[#00AEEF] hover:bg-[#0096ce] text-white font-medium py-3 px-8 rounded flex items-center justify-center mx-auto transition-all duration-300 shadow-sm">
+        <button className="bg-[#3498db] hover:bg-[#0096ce] text-white font-medium py-3 px-8 rounded flex items-center justify-center mx-auto transition-all duration-300 shadow-sm">
           Contact Us Today
           <span className="ml-2 text-lg">➔</span>
         </button>

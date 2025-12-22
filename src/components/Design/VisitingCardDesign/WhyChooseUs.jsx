@@ -23,10 +23,10 @@ const WhyChooseUs = () => {
           {cardData.map((item, index) => (
             <div
               key={index}
-              className="bg-white border border-[#4FC3F7] rounded-2xl p-8 md:p-10 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[320px] justify-center"
+              className="bg-white border border-[#3498db] rounded-2xl p-8 md:p-10 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 min-h-[320px] justify-center"
             >
               {/* Box Heading matching image blue color */}
-              <h3 className="text-[#4FC3F7] text-xl md:text-2xl font-bold mb-6">
+              <h3 className="text-[#3498db] text-xl md:text-2xl font-bold mb-6">
                 {item.title}
               </h3>
 

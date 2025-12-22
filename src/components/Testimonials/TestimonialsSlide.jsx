@@ -41,7 +41,7 @@ const TestimonialsSlide = () => {
       {/* Header */}
       <div className="flex flex-col items-start mb-6 ml-4 md:ml-20">
         <div className="flex items-center gap-2">
-          <div className="text-blue-600 bg-white border border-blue-600 rounded-full p-1">
+          <div className="cady-text bg-white border border-[#3498db] rounded-full p-1">
             <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" />
             </svg>
@@ -104,7 +104,7 @@ const TestimonialsSlide = () => {
 
             <div className="mt-4">
               <h4 className="text-xl font-bold text-gray-900">{Name}</h4>
-              <p className="text-blue-600 font-semibold">{Position}</p>
+              <p className="cady-text font-semibold">{Position}</p>
             </div>
           </div>
         </div>

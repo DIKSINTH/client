@@ -74,7 +74,7 @@ const AndroidServices = () => {
                   key={`col1-${index}`}
                   className="flex items-start text-lg text-gray-700"
                 >
-                  <span className="text-blue-500 font-bold mr-3">•</span>
+                  <span className="cady-text font-bold mr-3">•</span>
                   {service}
                 </li>
               ))}
@@ -87,7 +87,7 @@ const AndroidServices = () => {
                   key={`col2-${index}`}
                   className="flex items-start text-lg text-gray-700"
                 >
-                  <span className="text-blue-500 font-bold mr-3">•</span>
+                  <span className="cady-text font-bold mr-3">•</span>
                   {service}
                 </li>
               ))}
@@ -99,7 +99,7 @@ const AndroidServices = () => {
         <div className="mt-12">
           <button
             onClick={() => console.log("Navigate to Contact page")}
-            className="px-8 py-3 bg-blue-500 text-white font-medium rounded-md shadow-lg hover:bg-blue-600 transition duration-300 flex items-center justify-center mx-auto"
+            className="px-8 py-3 cady text-white font-medium rounded-md shadow-lg hover:bg-[#3498db] transition duration-300 flex items-center justify-center mx-auto"
           >
             Contact Us Today →
           </button>

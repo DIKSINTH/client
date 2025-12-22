@@ -41,7 +41,7 @@ const OurProcess = () => {
             <div key={index} className="relative flex flex-col items-center">
               {/* STEP BOX */}
               <div
-                className="w-44 sm:w-48 h-24 sm:h-28 bg-[#5BC0DE] flex items-center justify-center shadow-md"
+                className="w-44 sm:w-48 h-24 sm:h-28 bg-[#3498db] flex items-center justify-center shadow-md"
                 style={{
                   clipPath:
                     "polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%)",

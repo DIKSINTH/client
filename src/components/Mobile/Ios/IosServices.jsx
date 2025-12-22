@@ -65,7 +65,7 @@ const IosServicesList = () => {
                   key={index}
                   className="flex items-start text-lg text-gray-700"
                 >
-                  <span className="text-blue-500 font-bold mr-3">•</span>
+                  <span className="cady-text font-bold mr-3">•</span>
                   {service}
                 </li>
               ))}
@@ -77,7 +77,7 @@ const IosServicesList = () => {
                   key={index}
                   className="flex items-start text-lg text-gray-700"
                 >
-                  <span className="text-blue-500 font-bold mr-3">•</span>
+                  <span className="cady-text font-bold mr-3">•</span>
                   {service}
                 </li>
               ))}
@@ -88,7 +88,7 @@ const IosServicesList = () => {
         <div className="mt-12">
           <a
             href="/contact"
-            className="px-8 py-3 bg-blue-500 text-white rounded-md shadow-lg hover:bg-blue-600 transition inline-block"
+            className="px-8 py-3 cady text-white rounded-md shadow-lg hover:bg-[#3498db] transition inline-block"
           >
             Contact Us Today →
           </a>

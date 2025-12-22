@@ -60,7 +60,7 @@ const OurDesignProcess = () => {
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-center text-3xl md:text-4xl font-bold text-[#0091ff] mb-14">
+        <h2 className="text-center text-3xl md:text-4xl font-bold text-[#3498db] mb-14">
           Our Design Process
         </h2>
 

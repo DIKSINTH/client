@@ -71,7 +71,7 @@ const AboutUsSection = () => {
             </h2>
 
             {/* Separator Line */}
-            <div className="w-12 h-1 bg-indigo-500 mx-auto mb-10"></div>
+            <div className="w-12 h-1 cady mx-auto mb-10"></div>
 
             {/* Paragraph */}
             <p

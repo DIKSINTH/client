@@ -7,7 +7,7 @@ const API_URL = "http://localhost:5000/api/cross-platform-terms";
 // --- Single Process Card Component ---
 const ProcessCard = ({ term, description }) => {
   return (
-    <div className="p-6 bg-white border-2 border-blue-200 rounded-lg shadow-md transition duration-300 hover:shadow-xl hover:border-blue-400 h-full flex flex-col justify-start">
+    <div className="p-6 bg-white border-2 border-blue-200 rounded-lg shadow-md transition duration-300 hover:shadow-xl hover:border-[#3498db] h-full flex flex-col justify-start">
       <h3 className="text-xl font-bold text-cyan-600 mb-3 text-center">
         {term}
       </h3>
@@ -67,7 +67,7 @@ const CrossPlatformTerms = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-2">
             Our Cross Platform App Development
           </h2>
-          <p className="text-xl md:text-2xl font-semibold text-blue-500">
+          <p className="text-xl md:text-2xl font-semibold cady-text">
             Process That Assures 100% Satisfaction
           </p>
         </div>

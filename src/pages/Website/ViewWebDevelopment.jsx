@@ -14,7 +14,7 @@ export default function ViewWebDevelopment() {
 
   return (
     <DashboardLayout>
-      <h1 className="text-3xl font-bold mb-6">Web Design</h1>
+      <h1 className="text-3xl font-bold mb-6">Web Development</h1>
 
       <div className="bg-white p-5 shadow rounded-md">
         <table className="w-full text-left">

@@ -24,7 +24,7 @@ const ServiceCard = ({ service }) => {
         transform transition-all duration-500 ease-out
         hover:scale-[1.04] hover:-translate-y-2
         hover:shadow-2xl hover:shadow-indigo-400/40
-        hover:border-indigo-300 hover:bg-indigo-50
+        hover:border-[#3498db] hover:bg-[#3498db]
       "
     >
       <div
@@ -34,7 +34,7 @@ const ServiceCard = ({ service }) => {
 
           /* Circle Hover Glow */
           transition-all duration-500
-          group-hover:border-indigo-400 group-hover:shadow-indigo-300/50
+          group-hover:border-[#3498db] group-hover:shadow-indigo-300/50
         "
       >
         <img
@@ -102,7 +102,7 @@ const OurServices = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
             Our Services
           </h2>
-          <div className="w-16 h-1 bg-indigo-500 mx-auto mt-3"></div>
+          <div className="w-16 h-1 cady mx-auto mt-3"></div>
         </div>
 
         {/* FULL WIDTH GRID */}

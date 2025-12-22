@@ -1,5 +1,5 @@
 import DashboardLayout from "../layout/DashboardLayout";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "../css/Dashboard.css";
@@ -14,6 +14,20 @@ import {
 export default function Dashboard() {
   const [date, setDate] = useState(new Date());
 
+  const [counts, setCounts] = useState({
+    blogs: 0,
+    banners: 0,
+    testimonials: 0,
+    services: 0,
+  });
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/dashboard-counts/counts")
+      .then((res) => res.json())
+      .then((data) => setCounts(data))
+      .catch((err) => console.error("Dashboard count error:", err));
+  }, []);
+
   return (
     <DashboardLayout>
       <h1 className="text-4xl font-bold mb-8 text-black">Dashboard</h1>
@@ -22,22 +36,22 @@ export default function Dashboard() {
         <StatsCard
           icon={<FiTrendingUp size={50} className="text-blue-500" />}
           label="Blogs"
-          count={2}
+          count={counts.blogs}
         />
         <StatsCard
           icon={<FiBarChart2 size={50} className="text-blue-500" />}
-          label="Banner"
-          count={3}
+          label="Banners"
+          count={counts.banners}
         />
         <StatsCard
           icon={<FiActivity size={50} className="text-blue-500" />}
-          label="Testimonial"
-          count={6}
+          label="Testimonials"
+          count={counts.testimonials}
         />
         <StatsCard
           icon={<FiPieChart size={50} className="text-blue-500" />}
           label="Services"
-          count={9}
+          count={counts.services}
         />
       </div>
 

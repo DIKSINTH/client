@@ -40,7 +40,7 @@ const FooterList = () => {
 
   if (isLoading) {
     return (
-      <footer className="bg-blue-500 text-white p-8 text-center">
+      <footer className="cady text-white p-8 text-center">
         Loading Footer...
       </footer>
     );
@@ -48,7 +48,7 @@ const FooterList = () => {
 
   if (error || !data) {
     return (
-      <footer className="bg-blue-500 text-white p-8 text-center">
+      <footer className="cady text-white p-8 text-center">
         <p>Error loading content. Please check server & database.</p>
         <p className="mt-2 text-sm text-red-200">{error}</p>
         <div className="mt-8 pt-4 border-t border-blue-400 text-sm">
@@ -74,7 +74,7 @@ const FooterList = () => {
   ];
 
   return (
-    <footer className="bg-[#0091ff] text-white">
+    <footer className="cady text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* GRID - FULLY RESPONSIVE */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

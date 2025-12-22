@@ -70,9 +70,7 @@ const DesignProcess = () => {
             key={index}
             className="w-full max-w-sm mx-auto border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center"
           >
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
-              {item.title}
-            </h3>
+            <h3 className="cady-text font-bold text-xl mb-4">{item.title}</h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">
               {item.points.map((point, i) => point && <li key={i}>{point}</li>)}
             </ul>
@@ -85,7 +83,7 @@ const DesignProcess = () => {
         {/* ====== BOX 1 ====== */}
         <div className="absolute left-30 top-0 w-1/3 flex justify-center">
           <div className="w-full max-w-sm border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center">
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
+            <h3 className="cady-text font-bold text-xl mb-4">
               {data.Design_Process1}
             </h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">
@@ -104,7 +102,7 @@ const DesignProcess = () => {
         {/* ====== BOX 2 ====== */}
         <div className="absolute right-15 top-0 w-1/3 flex justify-center">
           <div className="w-full max-w-sm border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center">
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
+            <h3 className="cady-text font-bold text-xl mb-4">
               {data.Design_Process2}
             </h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">
@@ -123,7 +121,7 @@ const DesignProcess = () => {
         {/* ====== BOX 3 ====== */}
         <div className="absolute left-300 top-[380px] -translate-x-1/2 w-1/3 flex justify-center">
           <div className="w-full max-w-sm border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center">
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
+            <h3 className="cady-text font-bold text-xl mb-4">
               {data.Design_Process3}
             </h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">
@@ -141,7 +139,7 @@ const DesignProcess = () => {
         {/* ====== BOX 4 ====== */}
         <div className="absolute right-113 top-[440px] w-1/3 flex justify-center">
           <div className="w-full max-w-sm border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center">
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
+            <h3 className="cady-text font-bold text-xl mb-4">
               {data.Design_Process4}
             </h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">
@@ -160,7 +158,7 @@ const DesignProcess = () => {
         {/* ====== BOX 5 ====== */}
         <div className="absolute right-251 top-[460px] w-1/3 flex justify-center">
           <div className="w-full max-w-sm border-2 border-cyan-200 rounded-3xl p-8 bg-white shadow-sm min-h-[250px] text-center">
-            <h3 className="text-cyan-500 font-bold text-xl mb-4">
+            <h3 className="cady-text font-bold text-xl mb-4">
               {data.Design_Process5}
             </h3>
             <ul className="text-gray-700 text-sm space-y-3 list-disc text-left px-4">

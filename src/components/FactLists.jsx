@@ -59,7 +59,7 @@ const ChooseUsCard = ({ item }) => {
       </h3>
 
       {/* Animated Count + "+" */}
-      <div className="text-3xl font-bold text-indigo-600 mb-3">{count}+</div>
+      <div className="text-3xl font-bold text-[#3498db] mb-3">{count}+</div>
 
       {/* Description */}
       <div
@@ -121,7 +121,7 @@ const FactLists = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
             How We Works
           </h2>
-          <div className="w-12 h-1 bg-indigo-500 mx-auto mt-3"></div>
+          <div className="w-12 h-1 cady mx-auto mt-3"></div>
         </div>
 
         {/* RESPONSIVE GRID */}

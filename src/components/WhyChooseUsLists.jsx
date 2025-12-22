@@ -32,7 +32,7 @@ const ChooseUsCard = ({ item }) => {
         className="
           w-24 h-24 mb-4 flex items-center justify-center rounded-full 
           bg-white border-4 border-gray-100 shadow-md 
-          transition-all duration-500 hover:border-indigo-300 hover:shadow-indigo-200
+          transition-all duration-500 hover:border-[#3498db] hover:shadow-[#3498db]
         "
       >
         <img
@@ -107,7 +107,7 @@ const WhyChooseUsLists = () => {
           <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800">
             Why Choose Us
           </h2>
-          <div className="w-12 h-1 bg-indigo-500 mx-auto mt-3"></div>
+          <div className="w-12 h-1 cady mx-auto mt-3"></div>
         </div>
 
         {/* Points Grid */}

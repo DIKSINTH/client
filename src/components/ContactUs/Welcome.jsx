@@ -8,6 +8,14 @@ const Welcome = () => {
     Image: "",
   });
 
+  // 🔹 ADDED: form state
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
   useEffect(() => {
     fetch("http://localhost:5000/api/welcome-contact-us")
       .then((res) => res.json())
@@ -17,13 +25,43 @@ const Welcome = () => {
       .catch((err) => console.error("Error fetching contact data:", err));
   }, []);
 
+  // 🔹 ADDED: handle input change
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  // 🔹 ADDED: submit handler (API CALL)
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/api/send-contact-mail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        alert("Message sent successfully!");
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        alert("Email failed to send");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Server error");
+    }
+  };
+
   return (
     <section className="w-full py-12 px-4 md:px-10 bg-white font-sans">
       <div className="text-center mb-10">
         <h2 className="text-2xl md:text-3xl font-extrabold text-[#333] mb-3">
           {content.Title}
         </h2>
-        <p className="text-[#00AEEF] text-sm md:text-lg font-medium">
+        <p className="text-[#3498db] text-sm md:text-lg font-medium">
           {content.Sub_Title}
         </p>
       </div>
@@ -44,15 +82,18 @@ const Welcome = () => {
 
         {/* Right Side Form */}
         <div className="w-full lg:w-[500px] bg-[#AED9F1] p-6 md:p-8 rounded-sm shadow-sm">
-          <form className="space-y-4">
+          <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label className="block text-[#1a3a5a] font-bold text-sm mb-1">
                 Full Name :
               </label>
               <input
                 type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
                 placeholder="Enter Your Full Name"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#00AEEF]"
+                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
                 required
               />
             </div>
@@ -63,8 +104,11 @@ const Welcome = () => {
               </label>
               <input
                 type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 placeholder="Enter Your Mobile No"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#00AEEF]"
+                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
                 required
               />
             </div>
@@ -75,8 +119,11 @@ const Welcome = () => {
               </label>
               <input
                 type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
                 placeholder="Enter Your Email"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#00AEEF]"
+                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
                 required
               />
             </div>
@@ -87,15 +134,18 @@ const Welcome = () => {
               </label>
               <textarea
                 rows="4"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
                 placeholder="Write Your Message here..."
-                className="w-full p-2.5 bg-white outline-none text-sm resize-none focus:ring-2 focus:ring-[#00AEEF]"
+                className="w-full p-2.5 bg-white outline-none text-sm resize-none focus:ring-2 focus:ring-[#3498db]"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#0089D1] hover:bg-[#0076B4] text-white font-bold py-3 uppercase shadow-md"
+              className="w-full bg-[#3498db] hover:bg-[#3498db] text-white font-bold py-3 uppercase shadow-md"
             >
               SUBMIT
             </button>

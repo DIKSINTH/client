@@ -68,7 +68,7 @@ const WebMaintenanceEnd = () => {
           </p>
           <a
             href="/testimonials"
-            className="mt-6 inline-block px-8 py-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition"
+            className="mt-6 inline-block px-8 py-3 cady text-white rounded-full shadow-lg hover:bg-[#3498db] transition"
           >
             Testimonials →
           </a>
@@ -81,7 +81,7 @@ const WebMaintenanceEnd = () => {
           </p>
           <a
             href="/contact"
-            className="mt-6 inline-block px-8 py-3 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition"
+            className="mt-6 inline-block px-8 py-3 cady text-white rounded-full shadow-lg hover:bg-[#3498db] transition"
           >
             Contact Us Today →
           </a>

@@ -15,15 +15,15 @@ const ContactStrip = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left relative">
           {/* WRITE US */}
           <div className="flex flex-col items-center md:items-center gap-4">
-            <h3 className="text-[#0089D1] font-semibold text-xl">Write Us!</h3>
+            <h3 className="text-[#3498db] font-semibold text-xl">Write Us!</h3>
 
-            <div className="w-14 h-14 rounded-full bg-[#6AAEFF] flex items-center justify-center text-white text-2xl">
+            <div className="w-14 h-14 rounded-full bg-[#3498db] flex items-center justify-center text-white text-2xl">
               <FaEnvelope />
             </div>
 
             <a
               href="mailto:contact@cadyinfotech.com"
-              className="text-[#0089D1] text-sm font-medium hover:underline break-all"
+              className="text-[#3498db] text-sm font-medium hover:underline break-all"
             >
               contact@cadyinfotech.com
             </a>
@@ -34,7 +34,7 @@ const ContactStrip = () => {
 
           {/* PING US */}
           <div className="flex flex-col items-center md:items-center gap-4">
-            <h3 className="text-[#0089D1] font-semibold text-xl">Ping Us!</h3>
+            <h3 className="text-[#3498db] font-semibold text-xl">Ping Us!</h3>
 
             <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white text-2xl">
               <FaWhatsapp />
@@ -44,7 +44,7 @@ const ContactStrip = () => {
               href="https://wa.me/917200627900"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#0089D1] text-sm font-medium hover:underline"
+              className="text-[#3498db] text-sm font-medium hover:underline"
             >
               +91 7200 62 7900
             </a>
@@ -55,16 +55,14 @@ const ContactStrip = () => {
 
           {/* CONNECT US */}
           <div className="flex flex-col items-center md:items-center gap-4">
-            <h3 className="text-[#0089D1] font-semibold text-xl">
-              Connect Us!
-            </h3>
+            <h3 className="cady-text font-semibold text-xl">Connect Us!</h3>
 
             <div className="flex gap-4">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-[#1877F2] flex items-center justify-center text-white text-xl"
+                className="w-12 h-12 rounded-full cady flex items-center justify-center text-white text-xl"
               >
                 <FaFacebookF />
               </a>
@@ -82,7 +80,7 @@ const ContactStrip = () => {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-[#0A66C2] flex items-center justify-center text-white text-xl"
+                className="w-12 h-12 rounded-full cady flex items-center justify-center text-white text-xl"
               >
                 <FaLinkedinIn />
               </a>

@@ -59,9 +59,9 @@ const LogoDesignProcess = () => {
           {[1, 2, 3, 4].map((i) => (
             <div
               key={i}
-              className="bg-white border border-sky-300 rounded-2xl p-8 shadow-sm"
+              className="bg-white border border-[#3498db] rounded-2xl p-8 shadow-sm"
             >
-              <h3 className="text-sky-400 text-xl font-bold mb-6">
+              <h3 className="cady-text text-xl font-bold mb-6">
                 {data[`Design_Process${i}`]}
               </h3>
               <ul className="list-disc list-inside space-y-3 text-gray-800 font-semibold">
@@ -75,8 +75,8 @@ const LogoDesignProcess = () => {
         {/* DESKTOP ABSOLUTE BOXES */}
         <div className="hidden lg:block">
           {/* Top Left */}
-          <div className="absolute left-50 top-20 w-[260px] bg-white border border-sky-300 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-sky-400 text-xl font-bold mb-6">
+          <div className="absolute left-50 top-20 w-[260px] bg-white border border-[#3498db] rounded-2xl p-8 shadow-sm">
+            <h3 className="cady-text text-xl font-bold mb-6">
               {data.Design_Process1}
             </h3>
             <ul className="list-disc list-inside space-y-3 text-gray-800 font-semibold">
@@ -86,8 +86,8 @@ const LogoDesignProcess = () => {
           </div>
 
           {/* Top Right */}
-          <div className="absolute right-85 top-20 w-[260px] bg-white border border-sky-300 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-sky-400 text-xl font-bold mb-6">
+          <div className="absolute right-85 top-20 w-[260px] bg-white border border-[#3498db] rounded-2xl p-8 shadow-sm">
+            <h3 className="cady-text text-xl font-bold mb-6">
               {data.Design_Process2}
             </h3>
             <ul className="list-disc list-inside space-y-3 text-gray-800 font-semibold">
@@ -97,8 +97,8 @@ const LogoDesignProcess = () => {
           </div>
 
           {/* Bottom Right */}
-          <div className="absolute right-20 top-105 w-[260px] bg-white border border-sky-300 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-sky-400 text-xl font-bold mb-6">
+          <div className="absolute right-20 top-105 w-[260px] bg-white border border-[#3498db] rounded-2xl p-8 shadow-sm">
+            <h3 className="cady-text text-xl font-bold mb-6">
               {data.Design_Process3}
             </h3>
             <ul className="list-disc list-inside space-y-3 text-gray-800 font-semibold">
@@ -108,8 +108,8 @@ const LogoDesignProcess = () => {
           </div>
 
           {/* Bottom Left */}
-          <div className="absolute left-[450px] top-100 w-[260px] bg-white border border-sky-300 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-sky-400 text-xl font-bold mb-6">
+          <div className="absolute left-[450px] top-100 w-[260px] bg-white border border-[#3498db] rounded-2xl p-8 shadow-sm">
+            <h3 className="cady-text text-xl font-bold mb-6">
               {data.Design_Process4}
             </h3>
             <ul className="list-disc list-inside space-y-3 text-gray-800 font-semibold">

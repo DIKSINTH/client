@@ -144,7 +144,7 @@ const CarouselHeader = () => {
         }
       `}</style>
 
-      <header className="relative w-full bg-[#0091ff] overflow-hidden h-[300px] sm:h-[400px] md:h-[380px] lg:h-[350px]">
+      <header className="relative w-full cady overflow-hidden h-[300px] sm:h-[400px] md:h-[380px] lg:h-[350px]">
         {/* ===== MOBILE + TABLET (ONLY 6 SYMBOLS) ===== */}
         <div className="absolute top-5 left-5 rotate-symbol triangle glow opacity-30 lg:hidden"></div>
         <div className="absolute top-20 right-10 rotate-symbol square glow opacity-30 lg:hidden"></div>
