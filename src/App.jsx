@@ -69,6 +69,7 @@ import Blog from "./pages/Blog.jsx";
 import BlogContents from "./pages/BlogContents.jsx";
 import Testimonials from "./pages/Testimonials.jsx";
 import ContactUs2 from "./pages/ContactUs2.jsx";
+import LoadingIndicator from "./components/LoadingIndicater.jsx";
 
 import {
   BrowserRouter as Router,
@@ -80,6 +81,7 @@ import {
 function App() {
   return (
     <Router>
+      <LoadingIndicator />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />

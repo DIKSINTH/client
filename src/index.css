@@ -119,3 +119,21 @@ body {
 .cady-text {
   color: #3498db;
 }
+
+/* Loader*/
+
+@keyframes loading-bar {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.animate-loading-bar {
+  animation: loading-bar 1.2s ease-in-out infinite;
+}

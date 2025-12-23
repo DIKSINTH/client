@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import {
+  FiEdit2,
+  FiTrash2,
+  FiPlus,
+  FiExternalLink,
+  FiLayers,
+} from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 export default function ViewServices() {
@@ -21,114 +27,140 @@ export default function ViewServices() {
   const deleteService = async (id) => {
     if (!window.confirm("Are you sure you want to delete this service?"))
       return;
-
     const res = await fetch(`http://localhost:5000/api/services/${id}`, {
       method: "DELETE",
     });
-
     if (res.ok) {
-      alert("Service deleted successfully!");
       loadServices();
-    } else {
-      alert("Failed to delete service!");
     }
   };
 
   return (
     <DashboardLayout>
-      <div className="p-4">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">View Services</h1>
+      <div className="min-h-screen bg-slate-50/50 p-6 md:p-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <h1 className="text-3xl font-light text-slate-800 tracking-tight">
+                Company{" "}
+                <span className="font-bold text-indigo-600">Services</span>
+              </h1>
+              <p className="text-slate-500 text-sm mt-1 font-medium">
+                Showcase the solutions and expertise you offer.
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/dashboard/view-services/add")}
+              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-indigo-100 transition-all active:scale-95"
+            >
+              <FiPlus size={20} /> Add Service
+            </button>
+          </div>
 
-          <button
-            onClick={() => navigate("/dashboard/view-services/add")}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md"
-          >
-            Add Service
-          </button>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100 border-b">
-                <th className="py-2 px-4 border-r">ID</th>
-                <th className="py-2 px-4 border-r">Name</th>
-                <th className="py-2 px-4 border-r">Description</th>
-                <th className="py-2 px-4 border-r">Image</th>
-                <th className="py-2 px-4 border-r">URL</th>
-                <th className="py-2 px-4">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {services.length > 0 ? (
-                services.map((service) => (
-                  <tr key={service.id} className="border-b">
-                    <td className="py-2 px-4 border-r">{service.id}</td>
-
-                    <td className="py-2 px-4 border-r">{service.Name}</td>
-
-                    <td
-                      className="py-2 px-4 border-r"
-                      dangerouslySetInnerHTML={{
-                        __html: service.Description,
-                      }}
-                    ></td>
-
-                    <td className="py-2 px-4 border-r">
-                      {service.Image ? (
-                        <img
-                          src={`http://localhost:5000/uploads/${service.Image}`}
-                          alt="Service"
-                          className="w-20 h-20 object-cover rounded"
-                        />
-                      ) : (
-                        <span>No Image</span>
-                      )}
-                    </td>
-
-                    <td className="py-2 px-4 border-r">
-                      {service.URL ? (
-                        <a
-                          href={service.URL}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-600 underline"
-                        >
-                          {service.URL}
-                        </a>
-                      ) : (
-                        "—"
-                      )}
-                    </td>
-
-                    <td className="py-2 px-4 flex gap-3 justify-center">
-                      <FiEdit2
-                        className="text-blue-600 cursor-pointer"
-                        onClick={() =>
-                          navigate(
-                            `/dashboard/view-services/edit/${service.id}`
-                          )
-                        }
-                      />
-
-                      <FiTrash2
-                        className="text-red-600 cursor-pointer"
-                        onClick={() => deleteService(service.id)}
-                      />
-                    </td>
+          {/* Table */}
+          <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-50/80 border-b border-slate-100">
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                      Icon / Image
+                    </th>
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                      Service Details
+                    </th>
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                      Target Link
+                    </th>
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest text-center">
+                      Actions
+                    </th>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="text-center py-4 text-gray-500">
-                    No services found
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                </thead>
+                <tbody className="divide-y divide-slate-50">
+                  {services.length > 0 ? (
+                    services.map((service) => (
+                      <tr
+                        key={service.id}
+                        className="group hover:bg-indigo-50/30 transition-colors"
+                      >
+                        <td className="py-6 px-6">
+                          <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm flex-shrink-0">
+                            {service.Image ? (
+                              <img
+                                src={`http://localhost:5000/uploads/${service.Image}`}
+                                className="w-full h-full object-cover"
+                                alt=""
+                              />
+                            ) : (
+                              <div className="w-full h-full flex items-center justify-center text-slate-300">
+                                <FiLayers size={24} />
+                              </div>
+                            )}
+                          </div>
+                        </td>
+                        <td className="py-6 px-6">
+                          <h3 className="font-bold text-slate-800 text-lg leading-tight mb-1">
+                            {service.Name}
+                          </h3>
+                          <div
+                            className="text-sm text-slate-500 line-clamp-1 max-w-sm"
+                            dangerouslySetInnerHTML={{
+                              __html: service.Description,
+                            }}
+                          />
+                        </td>
+                        <td className="py-6 px-6">
+                          {service.URL ? (
+                            <a
+                              href={service.URL}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-500 hover:text-indigo-700 underline underline-offset-4 decoration-indigo-200"
+                            >
+                              <FiExternalLink size={14} /> View Page
+                            </a>
+                          ) : (
+                            <span className="text-slate-300 text-xs">—</span>
+                          )}
+                        </td>
+                        <td className="py-6 px-6">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              onClick={() =>
+                                navigate(
+                                  `/dashboard/view-services/edit/${service.id}`
+                                )
+                              }
+                              className="p-2.5 rounded-xl bg-white border border-slate-100 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
+                            >
+                              <FiEdit2 size={16} />
+                            </button>
+                            <button
+                              onClick={() => deleteService(service.id)}
+                              className="p-2.5 rounded-xl bg-white border border-slate-100 text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                            >
+                              <FiTrash2 size={16} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td
+                        colSpan="4"
+                        className="text-center py-20 text-slate-400"
+                      >
+                        No services found.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>

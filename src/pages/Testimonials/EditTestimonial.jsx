@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, Link } from "react-router-dom";
+import {
+  FiArrowLeft,
+  FiSave,
+  FiUploadCloud,
+  FiUser,
+  FiBriefcase,
+} from "react-icons/fi";
 
 export default function EditTestimonial() {
   const [name, setName] = useState("");
@@ -8,110 +15,139 @@ export default function EditTestimonial() {
   const [description, setDescription] = useState("");
   const [currentImage, setCurrentImage] = useState(null);
   const [image, setImage] = useState(null);
-
+  const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(`http://localhost:5000/api/testimonials/${id}`);
-        if (!res.ok) throw new Error("Failed to fetch testimonial");
-
-        const data = await res.json();
-
+    fetch(`http://localhost:5000/api/testimonials/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
         setName(data.name || "");
         setPosition(data.position || "");
         setDescription(data.description || "");
         setCurrentImage(data.image || null);
-      } catch (err) {
-        setError("Failed to load testimonial data", err);
-      } finally {
+        setPreview(
+          data.image ? `http://localhost:5000/uploads/${data.image}` : ""
+        );
         setLoading(false);
-      }
-    };
-
-    fetchData();
+      });
   }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const formData = new FormData();
     formData.append("name", name);
     formData.append("position", position);
     formData.append("description", description);
     if (image) formData.append("image", image);
 
-    try {
-      const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
-        method: "PUT",
-        body: formData,
-      });
-
-      if (!res.ok) throw new Error();
-
-      alert("Testimonial updated successfully!");
-      navigate("/dashboard/view-testimonials");
-    } catch {
-      alert("Error updating testimonial!");
-    }
+    const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+      method: "PUT",
+      body: formData,
+    });
+    if (res.ok) navigate("/dashboard/view-testimonials");
   };
 
-  if (loading) return <p className="text-center mt-6">Loading...</p>;
-  if (error) return <p className="text-center mt-6 text-red-600">{error}</p>;
+  if (loading)
+    return (
+      <DashboardLayout>
+        <div className="p-10">Loading profile...</div>
+      </DashboardLayout>
+    );
 
   return (
     <DashboardLayout>
-      <div className="p-4 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold mb-4">Edit Testimonial</h2>
+      <div className="min-h-screen bg-slate-50/50 p-6 md:p-10">
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+            <div>
+              <Link
+                to="/dashboard/view-testimonials"
+                className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-all text-sm font-semibold mb-2 group"
+              >
+                <FiArrowLeft className="group-hover:-translate-x-1 transition-transform" />{" "}
+                Back
+              </Link>
+              <h1 className="text-3xl font-bold text-slate-800 tracking-tight">
+                Edit <span className="text-indigo-600">Review</span>
+              </h1>
+            </div>
+            <button
+              onClick={handleSubmit}
+              className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3.5 rounded-2xl font-bold shadow-xl shadow-indigo-100 transition-all active:scale-95"
+            >
+              <FiSave size={20} /> Update Testimonial
+            </button>
+          </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="border p-2 w-full rounded"
-            required
-          />
+          <form className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-7 bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <div className="group">
+                  <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2 ml-1">
+                    Client Name
+                  </label>
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white p-4 rounded-xl outline-none transition-all font-semibold"
+                  />
+                </div>
+                <div className="group">
+                  <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2 ml-1">
+                    Position
+                  </label>
+                  <input
+                    value={position}
+                    onChange={(e) => setPosition(e.target.value)}
+                    className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white p-4 rounded-xl outline-none transition-all font-semibold"
+                  />
+                </div>
+              </div>
+              <div className="group">
+                <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2 ml-1">
+                  Feedback
+                </label>
+                <textarea
+                  rows="6"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 focus:border-indigo-500 focus:bg-white p-4 rounded-xl outline-none transition-all h-48"
+                />
+              </div>
+            </div>
 
-          <input
-            type="text"
-            value={position}
-            onChange={(e) => setPosition(e.target.value)}
-            className="border p-2 w-full rounded"
-            required
-          />
-
-          <textarea
-            rows="6"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="border p-2 w-full rounded"
-            required
-          />
-
-          {currentImage && !image && (
-            <img
-              src={`http://localhost:5000/uploads/${currentImage}`}
-              className="w-32 h-32 object-cover rounded"
-              alt="Current"
-            />
-          )}
-
-          <input
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            className="border p-2 w-full rounded"
-          />
-
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
-            Update Testimonial
-          </button>
-        </form>
+            <div className="lg:col-span-5 bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 space-y-6">
+              <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest block mb-2">
+                Profile Photo
+              </label>
+              <div className="relative rounded-full w-40 h-40 mx-auto overflow-hidden bg-slate-100 border-4 border-white shadow-xl">
+                <img
+                  src={preview}
+                  className="w-full h-full object-cover"
+                  alt="Reviewer"
+                />
+              </div>
+              <label className="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-slate-200 rounded-2xl cursor-pointer hover:bg-indigo-50 transition-all">
+                <FiUploadCloud size={30} className="text-slate-300 mb-2" />
+                <span className="text-[11px] font-bold text-slate-500 uppercase">
+                  Change Photo
+                </span>
+                <input
+                  type="file"
+                  className="hidden"
+                  onChange={(e) => {
+                    setImage(e.target.files[0]);
+                    setPreview(URL.createObjectURL(e.target.files[0]));
+                  }}
+                />
+              </label>
+            </div>
+          </form>
+        </div>
       </div>
     </DashboardLayout>
   );

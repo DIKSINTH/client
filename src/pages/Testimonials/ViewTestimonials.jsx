@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
-import { FiEdit2, FiTrash2 } from "react-icons/fi";
+import {
+  FiEdit2,
+  FiTrash2,
+  FiPlus,
+  FiUser,
+  FiMessageSquare,
+} from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 
 export default function ViewTestimonials() {
@@ -21,97 +27,133 @@ export default function ViewTestimonials() {
   const deleteTestimonial = async (id) => {
     if (!window.confirm("Are you sure you want to delete this testimonial?"))
       return;
-
     const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
       method: "DELETE",
     });
-
     if (res.ok) {
       alert("Testimonial deleted successfully!");
       loadTestimonials();
-    } else {
-      alert("Failed to delete testimonial!");
     }
   };
 
   return (
     <DashboardLayout>
-      <div className="p-4">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">View Testimonials</h1>
+      <div className="min-h-screen bg-slate-50/50 p-6 md:p-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <h1 className="text-3xl font-light text-slate-800 tracking-tight">
+                Client{" "}
+                <span className="font-bold text-indigo-600">Testimonials</span>
+              </h1>
+              <p className="text-slate-500 text-sm mt-1 font-medium">
+                Manage the feedback displayed in the slider section.
+              </p>
+            </div>
+            <button
+              onClick={() => navigate("/dashboard/view-testimonials/add")}
+              className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-indigo-100 transition-all active:scale-95"
+            >
+              <FiPlus size={20} /> Add Testimonial
+            </button>
+          </div>
 
-          <button
-            onClick={() => navigate("/dashboard/view-testimonials/add")}
-            className="px-4 py-2 bg-blue-600 text-white rounded-md"
-          >
-            Add Testimonial
-          </button>
-        </div>
-
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border border-gray-300">
-            <thead>
-              <tr className="bg-gray-100 border-b">
-                <th className="py-2 px-4 border-r">ID</th>
-                <th className="py-2 px-4 border-r">Name</th>
-                <th className="py-2 px-4 border-r">Position</th>
-                <th className="py-2 px-4 border-r">Description</th>
-                <th className="py-2 px-4 border-r">Image</th>
-                <th className="py-2 px-4">Actions</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {testimonials.length > 0 ? (
-                testimonials.map((testimonial) => (
-                  <tr key={testimonial.id} className="border-b">
-                    <td className="py-2 px-4 border-r">{testimonial.id}</td>
-                    <td className="py-2 px-4 border-r">{testimonial.name}</td>
-                    <td className="py-2 px-4 border-r">
-                      {testimonial.position}
-                    </td>
-                    <td
-                      className="py-2 px-4 border-r"
-                      dangerouslySetInnerHTML={{
-                        __html: testimonial.description,
-                      }}
-                    />
-                    <td className="py-2 px-4 border-r">
-                      {testimonial.image ? (
-                        <img
-                          src={`http://localhost:5000/uploads/${testimonial.image}`}
-                          alt="Testimonial"
-                          className="w-20 h-20 object-cover rounded"
-                        />
-                      ) : (
-                        <span>No Image</span>
-                      )}
-                    </td>
-                    <td className="py-2 px-4 flex gap-3 justify-center">
-                      <FiEdit2
-                        className="text-blue-600 cursor-pointer"
-                        onClick={() =>
-                          navigate(
-                            `/dashboard/view-testimonials/edit/${testimonial.id}`
-                          )
-                        }
-                      />
-                      <FiTrash2
-                        className="text-red-600 cursor-pointer"
-                        onClick={() => deleteTestimonial(testimonial.id)}
-                      />
-                    </td>
+          {/* Table Container */}
+          <div className="bg-white rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-slate-50/80 border-b border-slate-100">
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                      Client
+                    </th>
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest">
+                      Review
+                    </th>
+                    <th className="py-5 px-6 text-[11px] font-black text-slate-400 uppercase tracking-widest text-center">
+                      Actions
+                    </th>
                   </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6" className="text-center py-4 text-gray-500">
-                    No testimonials found
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+                </thead>
+                <tbody className="divide-y divide-slate-50">
+                  {testimonials.length > 0 ? (
+                    testimonials.map((t) => (
+                      <tr
+                        key={t.id}
+                        className="group hover:bg-indigo-50/30 transition-colors"
+                      >
+                        <td className="py-6 px-6">
+                          <div className="flex items-center gap-4">
+                            <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm ring-1 ring-slate-100 flex-shrink-0">
+                              {t.image ? (
+                                <img
+                                  src={`http://localhost:5000/uploads/${t.image}`}
+                                  className="w-full h-full object-cover"
+                                  alt={t.name}
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-300">
+                                  <FiUser size={20} />
+                                </div>
+                              )}
+                            </div>
+                            <div>
+                              <h3 className="font-bold text-slate-800 leading-tight">
+                                {t.name}
+                              </h3>
+                              <p className="text-xs text-indigo-500 font-semibold">
+                                {t.position}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="py-6 px-6">
+                          <div className="max-w-md">
+                            <div
+                              className="text-sm text-slate-600 line-clamp-2 leading-relaxed italic"
+                              dangerouslySetInnerHTML={{
+                                __html: t.description,
+                              }}
+                            />
+                          </div>
+                        </td>
+                        <td className="py-6 px-6">
+                          <div className="flex items-center justify-center gap-2">
+                            <button
+                              onClick={() =>
+                                navigate(
+                                  `/dashboard/view-testimonials/edit/${t.id}`
+                                )
+                              }
+                              className="p-2.5 rounded-xl bg-white border border-slate-100 text-indigo-600 hover:bg-indigo-600 hover:text-white transition-all shadow-sm"
+                            >
+                              <FiEdit2 size={16} />
+                            </button>
+                            <button
+                              onClick={() => deleteTestimonial(t.id)}
+                              className="p-2.5 rounded-xl bg-white border border-slate-100 text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-sm"
+                            >
+                              <FiTrash2 size={16} />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  ) : (
+                    <tr>
+                      <td
+                        colSpan="3"
+                        className="text-center py-20 text-slate-400 font-medium"
+                      >
+                        No testimonials found.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>

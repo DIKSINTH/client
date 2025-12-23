@@ -30,51 +30,81 @@ export default function Dashboard() {
 
   return (
     <DashboardLayout>
-      <h1 className="text-4xl font-bold mb-8 text-black">Dashboard</h1>
+      {/* Header Section */}
+      <div className="mb-12">
+        <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
+        <p className="text-slate-500 mt-1">
+          Overview of your platform's current status.
+        </p>
+      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+      {/* Stats Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <StatsCard
-          icon={<FiTrendingUp size={50} className="text-blue-500" />}
-          label="Blogs"
+          icon={<FiTrendingUp size={22} />}
+          label="Total Blogs"
           count={counts.blogs}
+          bg="bg-blue-50"
+          text="text-blue-600"
         />
         <StatsCard
-          icon={<FiBarChart2 size={50} className="text-blue-500" />}
-          label="Banners"
+          icon={<FiBarChart2 size={22} />}
+          label="Active Banners"
           count={counts.banners}
+          bg="bg-indigo-50"
+          text="text-indigo-600"
         />
         <StatsCard
-          icon={<FiActivity size={50} className="text-blue-500" />}
+          icon={<FiActivity size={22} />}
           label="Testimonials"
           count={counts.testimonials}
+          bg="bg-emerald-50"
+          text="text-emerald-600"
         />
         <StatsCard
-          icon={<FiPieChart size={50} className="text-blue-500" />}
+          icon={<FiPieChart size={22} />}
           label="Services"
           count={counts.services}
+          bg="bg-amber-50"
+          text="text-amber-600"
         />
       </div>
 
-      <div className="custom-calendar-container">
-        <div className="custom-calendar-header">
-          <h2>Calendar</h2>
-          <button>Show All</button>
+      {/* Calendar Section */}
+      <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm max-w-4xl">
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-xl font-semibold text-slate-800">
+              Content Calendar
+            </h2>
+            <p className="text-sm text-slate-500">
+              Track and plan your upcoming updates
+            </p>
+          </div>
         </div>
 
-        <Calendar onChange={setDate} value={date} className="custom-calendar" />
+        <div className="flex justify-center">
+          <Calendar
+            onChange={setDate}
+            value={date}
+            className="custom-calendar border-none w-full"
+          />
+        </div>
       </div>
     </DashboardLayout>
   );
 }
 
-function StatsCard({ icon, label, count }) {
+function StatsCard({ icon, label, count, bg, text }) {
   return (
-    <div className="bg-gray-100 p-6 rounded-xl shadow flex items-center justify-between">
+    <div className="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm hover:border-slate-300 transition-all">
       <div className="flex items-center gap-4">
-        {icon}
-        <div className="text-left">
-          <p className="text-gray-600 text-md">{label}</p>
-          <p className="text-2xl font-bold text-black">{count}</p>
+        <div className={`${bg} ${text} p-3 rounded-xl`}>{icon}</div>
+        <div>
+          <p className="text-slate-500 text-sm font-medium">{label}</p>
+          <p className="text-2xl font-bold text-slate-900">
+            {count.toLocaleString()}
+          </p>
         </div>
       </div>
     </div>

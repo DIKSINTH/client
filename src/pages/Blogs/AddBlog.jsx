@@ -2,66 +2,186 @@ import { useState, useRef } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate } from "react-router-dom";
 import JoditEditor from "jodit-react";
+import {
+  FiArrowLeft,
+  FiPlus,
+  FiUploadCloud,
+  FiImage,
+  FiBookOpen,
+} from "react-icons/fi";
+
 export default function AddBlog() {
   const [Name, setName] = useState("");
   const [Description, setDescription] = useState("");
   const [Image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
+
   const editor = useRef(null);
   const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!Image) {
+      alert("Please upload a featured image.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("Name", Name);
     formData.append("Description", Description);
     formData.append("Image", Image);
+
     const res = await fetch("http://localhost:5000/api/blogs", {
       method: "POST",
       body: formData,
     });
+
     if (res.ok) {
-      alert("Blog Added Successfully!");
       navigate("/dashboard/view-blogs");
     } else {
       alert("Error adding blog!");
     }
   };
+
   return (
     <DashboardLayout>
-      {" "}
-      <div className="p-4 max-w-2xl mx-auto">
-        {" "}
-        <h2 className="text-2xl font-bold mb-4">Add New Blog</h2>{" "}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {" "}
-          {/* Blog Name */}{" "}
-          <input
-            type="text"
-            placeholder="Blog Name"
-            value={Name}
-            onChange={(e) => setName(e.target.value)}
-            className="border p-2 w-full rounded"
-            required
-          />{" "}
-          <label className="font-semibold">Description</label>{" "}
-          {/* JODIT EDITOR */}{" "}
-          <JoditEditor
-            ref={editor}
-            value={Description}
-            onChange={(newContent) => setDescription(newContent)}
-          />{" "}
-          {/* Image Upload */}{" "}
-          <input
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-            className="border p-2 w-full rounded"
-            required
-          />{" "}
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
-            {" "}
-            Add Blog{" "}
-          </button>{" "}
-        </form>{" "}
-      </div>{" "}
+      {/* Header Section */}
+      <div className="mb-8 max-w-4xl mx-auto">
+        <button
+          onClick={() => navigate("/dashboard/view-blogs")}
+          className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-blue-600 transition-colors mb-2"
+        >
+          <FiArrowLeft /> Back to Blogs
+        </button>
+        <div className="flex items-center gap-3">
+          <div className="p-3 bg-blue-50 text-blue-600 rounded-xl">
+            <FiBookOpen size={24} />
+          </div>
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">
+              Create New Post
+            </h1>
+            <p className="text-slate-500 mt-1">
+              Draft your story and share it with your audience.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex justify-center pb-12">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm w-full max-w-4xl space-y-8"
+        >
+          {/* Blog Title Input */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">
+              Blog Title
+            </label>
+            <input
+              type="text"
+              placeholder="Enter blog name..."
+              value={Name}
+              onChange={(e) => setName(e.target.value)}
+              className="w-full border border-slate-200 p-3.5 rounded-xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none text-lg font-medium text-slate-800 placeholder:text-slate-400"
+              required
+            />
+          </div>
+
+          {/* Description Editor */}
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-3">
+              Content Body
+            </label>
+            <div className="rounded-xl overflow-hidden border border-slate-200">
+              <JoditEditor
+                ref={editor}
+                value={Description}
+                config={{
+                  readonly: false,
+                  placeholder: "Start writing your blog content here...",
+                  minHeight: 400,
+                  buttonList:
+                    "bold,italic,underline,ul,ol,font,fontsize,paragraph,image,link,align,undo,redo",
+                }}
+                onChange={(newContent) => setDescription(newContent)}
+              />
+            </div>
+          </div>
+
+          {/* Featured Image Section */}
+          <div className="pt-4">
+            <label className="block text-sm font-semibold text-slate-700 mb-4">
+              Featured Image
+            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Upload Box */}
+              <div className="relative border-2 border-dashed border-slate-200 rounded-2xl p-8 text-center hover:border-blue-400 transition-all group bg-slate-50/50">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                      setImage(file);
+                      setPreview(URL.createObjectURL(file));
+                    }
+                  }}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                  required
+                />
+                <div className="text-slate-500 pointer-events-none">
+                  <FiUploadCloud
+                    size={32}
+                    className="mx-auto mb-2 text-slate-400 group-hover:text-blue-500 transition-colors"
+                  />
+                  <p className="text-sm font-semibold text-slate-700">
+                    Upload Cover Image
+                  </p>
+                  <p className="text-xs mt-1 text-slate-400">
+                    Click or drag & drop
+                  </p>
+                </div>
+              </div>
+
+              {/* Preview Box */}
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-3 flex justify-center items-center h-44 shadow-inner overflow-hidden">
+                {preview ? (
+                  <img
+                    src={preview}
+                    alt="Preview"
+                    className="h-full w-full object-cover rounded-xl animate-in fade-in duration-300"
+                  />
+                ) : (
+                  <div className="text-slate-300 flex flex-col items-center">
+                    <FiImage size={32} className="opacity-20 mb-2" />
+                    <span className="text-[10px] uppercase tracking-widest font-bold">
+                      Preview Area
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Form Actions */}
+          <div className="flex items-center justify-between pt-8 border-t border-slate-100">
+            <button
+              type="button"
+              onClick={() => navigate("/dashboard/view-blogs")}
+              className="text-slate-500 font-medium hover:text-slate-800 transition-colors"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-blue-600 text-white px-10 py-3.5 rounded-xl font-bold flex items-center gap-2 hover:bg-blue-700 shadow-xl shadow-blue-500/20 transition-all active:scale-[0.98]"
+            >
+              <FiPlus size={20} /> Publish Post
+            </button>
+          </div>
+        </form>
+      </div>
     </DashboardLayout>
   );
 }
