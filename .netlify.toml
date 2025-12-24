@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Fix React Router refresh issue
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
