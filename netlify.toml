@@ -6,6 +6,7 @@
   from = "/api/*"
   to = "https://server-ii21.onrender.com/api/:splat"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/*"
