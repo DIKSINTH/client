@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "../../../config/api.js";
 
 const OurProcess = () => {
   const [steps, setSteps] = useState([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/logo-process")
+    fetch(`${API_BASE}/api/logo-process`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Failed to fetch process data");

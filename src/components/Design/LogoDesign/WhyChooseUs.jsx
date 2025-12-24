@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "../../../config/api.js";
 
 const WhyChooseUs = () => {
   const [points, setPoints] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/logo-design-reasons")
+    fetch(`${API_BASE}/api/logo-design-reasons`)
       .then((res) => res.json())
       .then((data) => setPoints(data))
       .catch((err) => console.error("Error fetching data:", err));

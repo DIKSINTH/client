@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
+// ✅ Import API base URL
+import { API_BASE } from "../../../config/api.js";
+
 const LogoDesignEnd = () => {
   const [bottomDesc, setBottomDesc] = useState("");
 
   useEffect(() => {
     // Fetch dynamic description from backend
-    fetch("http://localhost:5000/api/logo-design-end")
+    fetch(`${API_BASE}/api/logo-design-end`)
       .then((res) => res.json())
       .then((data) => setBottomDesc(data.description))
       .catch((err) => console.error("Error fetching description:", err));

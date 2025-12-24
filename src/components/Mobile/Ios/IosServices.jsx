@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/ios-services";
+const API_URL = `${API_BASE}/api/ios-services`;
 
 const IosServicesList = () => {
   const [services, setServices] = useState([]);

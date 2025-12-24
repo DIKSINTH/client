@@ -9,6 +9,7 @@ import {
   FiType,
   FiAlignLeft,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api";
 
 export default function EditBlogContent() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function EditBlogContent() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/blogcontent")
+    fetch(`${API_BASE}/api/blogcontent`)
       .then((res) => res.json())
       .then((data) => {
         setHeading(data.Heading || "");
@@ -50,7 +51,7 @@ export default function EditBlogContent() {
       formData.append("Content", Content);
       formData.append("Image", selectedFile);
 
-      const res = await fetch("http://localhost:5000/api/blogcontent", {
+      const res = await fetch(`${API_BASE}/api/blogcontent`, {
         method: "PUT",
         body: formData,
       });
@@ -132,7 +133,7 @@ export default function EditBlogContent() {
                     />
                   ) : currentImage ? (
                     <img
-                      src={`http://localhost:5000/uploads/${currentImage}`}
+                      src={`${API_BASE}/uploads/${currentImage}`}
                       className="w-full h-full object-cover"
                       alt="Current"
                     />

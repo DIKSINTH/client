@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-
-const API_URL = "http://localhost:5000/api/blog-contents";
+import { API_BASE } from "../../config/api.js";
+const API_URL = `${API_BASE}/api/blog-contents`;
 const LIKE_EXPIRY_DAYS = 365;
 
-// Helper: image path
+// Helper: image path (IMPORTANT FIX)
 const getImagePath = (filename) => {
   if (!filename) return "";
-  return `http://localhost:5000/uploads/${filename}`;
+  return `${API_BASE}/uploads/${filename}`;
 };
 
 // Helper: get stored like data safely

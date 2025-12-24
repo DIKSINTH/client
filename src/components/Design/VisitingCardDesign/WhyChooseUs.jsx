@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import { API_BASE } from "../../../config/api.js";
 const WhyChooseUs = () => {
   const [cardData, setCardData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/visiting-card-reasons")
+    fetch(`${API_BASE}/api/visiting-card-reasons`)
       .then((res) => res.json())
       .then((data) => setCardData(data))
       .catch((err) => console.error("Error fetching data:", err));

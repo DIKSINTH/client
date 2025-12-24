@@ -10,6 +10,7 @@ import {
   FiUploadCloud,
   FiLayers,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddHowWeWorks() {
   const [Name, setName] = useState("");
@@ -29,7 +30,7 @@ export default function AddHowWeWorks() {
     formData.append("URL", URL);
     formData.append("Image", Image);
 
-    const res = await fetch("http://localhost:5000/api/howweworks", {
+    const res = await fetch(`${API_BASE}/api/howweworks`, {
       method: "POST",
       body: formData,
     });

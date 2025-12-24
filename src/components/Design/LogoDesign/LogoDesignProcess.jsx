@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE } from "../../../config/api.js";
 
 const LogoDesignProcess = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/logo-design-process")
+    fetch(`${API_BASE}/api/logo-design-process`)
       .then((res) => {
         if (!res.ok) throw new Error("Fetch failed");
         return res.json();

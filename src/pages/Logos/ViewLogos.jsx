@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate } from "react-router-dom";
 import { FiPlus, FiEdit2, FiTrash2, FiImage } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewLogos() {
   const [logos, setLogos] = useState([]);
   const navigate = useNavigate();
 
   const loadLogos = () => {
-    fetch("http://localhost:5000/api/logos")
+    fetch(`${API_BASE}/api/logos`)
       .then((res) => res.json())
       .then((data) => setLogos(data));
   };
@@ -20,7 +21,7 @@ export default function ViewLogos() {
   const deleteLogo = (id) => {
     if (!window.confirm("Are you sure you want to delete this logo?")) return;
 
-    fetch(`http://localhost:5000/api/logos/delete/${id}`, {
+    fetch(`${API_BASE}/api/logos/delete/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -79,7 +80,7 @@ export default function ViewLogos() {
                       <div className="flex justify-center">
                         <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-inner">
                           <img
-                            src={`http://localhost:5000/uploads/${logo.Image}`}
+                            src={`${API_BASE}/uploads/${logo.Image}`}
                             alt="Logo"
                             className="h-12 w-auto object-contain mx-auto"
                           />

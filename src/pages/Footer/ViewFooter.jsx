@@ -2,6 +2,7 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEdit2, FiLayout, FiList } from "react-icons/fi";
+import { API_BASE } from "../../config/api";
 
 export default function ViewFooter() {
   const [data, setData] = useState({});
@@ -9,7 +10,7 @@ export default function ViewFooter() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/footer")
+    fetch(`${API_BASE}/api/footer`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);

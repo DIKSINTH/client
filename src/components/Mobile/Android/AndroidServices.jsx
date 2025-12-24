@@ -1,8 +1,9 @@
 // AndroidServicesList.jsx
 
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api.js";
 
-const API_URL = "http://localhost:5000/api/android-services"; // Must match your Express server URL
+const API_URL = `${API_BASE}/api/android-services`; // Must match your Express server URL
 
 // --- Main Android Services Section Component ---
 const AndroidServices = () => {

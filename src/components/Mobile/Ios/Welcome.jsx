@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from "react";
 import "../../../css/Mobile.css"; // Import custom CSS for animation
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/welcome-ios"; // Must match your Express server URL
+const API_URL = `${API_BASE}/api/welcome-ios`; // Must match your Express server URL
 
 // Helper function to get backend image path
 const getImagePath = (filename) => {
   if (!filename) return "";
-  return `http://localhost:5000/uploads/${filename}`;
+  return `${API_BASE}/uploads/${filename}`;
 };
 
 // --- Main Android Introduction Component ---

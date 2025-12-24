@@ -9,6 +9,7 @@ import {
   FiAlignLeft,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditTestimonialContent() {
   const navigate = useNavigate();
@@ -20,15 +21,13 @@ export default function EditTestimonialContent() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/testimonialcontent")
+    fetch(`${API_BASE}/api/testimonialcontent`)
       .then((res) => res.json())
       .then((data) => {
         setHeading(data.Heading || "");
         setContent(data.Content || "");
         setCurrentImage(data.Image || "");
-        setPreview(
-          data.Image ? `http://localhost:5000/uploads/${data.Image}` : ""
-        );
+        setPreview(data.Image ? `${API_BASE}/uploads/${data.Image}` : "");
       })
       .catch((err) => console.error(err));
   }, []);
@@ -44,7 +43,7 @@ export default function EditTestimonialContent() {
       formData.append("Content", Content);
       if (selectedFile) formData.append("Image", selectedFile);
 
-      const res = await fetch("http://localhost:5000/api/testimonialcontent", {
+      const res = await fetch(`${API_BASE}/api/testimonialcontent`, {
         method: "PUT",
         body: formData,
       });

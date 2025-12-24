@@ -2,6 +2,7 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEdit2 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewAboutUs() {
   const [data, setData] = useState({});
@@ -10,7 +11,7 @@ export default function ViewAboutUs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/aboutus")
+    fetch(`${API_BASE}/api/aboutus`)
       .then((res) => res.json())
       .then((data) => {
         setData(data || {});
@@ -96,7 +97,7 @@ export default function ViewAboutUs() {
                   {data.Image ? (
                     <div className="flex justify-center">
                       <img
-                        src={`http://localhost:5000${data.Image}`}
+                        src={`${API_BASE}${data.Image}`}
                         alt="About"
                         className="w-24 h-16 object-cover rounded-lg border border-slate-200 shadow-sm"
                       />

@@ -1,7 +1,8 @@
+import { API_BASE } from "../../../config/api";
 import "../../../css/design-process.css";
 import React, { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/web-maintenance-design-process";
+const API_URL = `${API_BASE}/api/web-maintenance-design-process`;
 
 const Step = ({ text, index }) => {
   const isBlue = index % 2 === 0;

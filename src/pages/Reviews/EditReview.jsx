@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import { FiArrowLeft, FiSave, FiUser, FiMessageCircle } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditReview() {
   const [Name, setName] = useState("");
@@ -10,7 +11,7 @@ export default function EditReview() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/reviews/${id}`)
+    fetch(`${API_BASE}/api/reviews/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.Name);
@@ -21,7 +22,7 @@ export default function EditReview() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:5000/api/reviews/${id}`, {
+    const res = await fetch(`${API_BASE}/api/reviews/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Name, Review }),

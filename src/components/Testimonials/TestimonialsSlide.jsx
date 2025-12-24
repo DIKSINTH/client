@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { API_BASE } from "../../config/api.js";
 
 const TestimonialsSlide = () => {
   const [testimonials, setTestimonials] = useState([]);
@@ -6,7 +7,7 @@ const TestimonialsSlide = () => {
 
   // Fetch testimonials
   useEffect(() => {
-    fetch("http://localhost:5000/api/testimonials-slide")
+    fetch(`${API_BASE}/api/testimonials-slide`)
       .then((res) => res.json())
       .then((data) => setTestimonials(data))
       .catch((err) => console.error("Error fetching testimonials:", err));

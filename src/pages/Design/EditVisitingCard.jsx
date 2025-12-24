@@ -8,6 +8,7 @@ import {
   FiEdit3,
   FiLayers,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditVisitingCard() {
   const navigate = useNavigate();
@@ -16,12 +17,11 @@ export default function EditVisitingCard() {
   const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/visitingcard")
+    fetch(`${API_BASE}/api/visitingcard`)
       .then((res) => res.json())
       .then((data) => {
         setForm(data);
-        if (data.Image)
-          setPreview(`http://localhost:5000/uploads/${data.Image}`);
+        if (data.Image) setPreview(`${API_BASE}/uploads/${data.Image}`);
       });
   }, []);
 
@@ -37,7 +37,7 @@ export default function EditVisitingCard() {
     });
     if (Image) fd.append("Image", Image);
 
-    await fetch(`http://localhost:5000/api/visitingcard/update/${form.id}`, {
+    await fetch(`${API_BASE}/api/visitingcard/update/${form.id}`, {
       method: "PUT",
       body: fd,
     });

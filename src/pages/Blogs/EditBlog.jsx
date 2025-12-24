@@ -9,6 +9,7 @@ import {
   FiUploadCloud,
   FiEdit3,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditBlog() {
   const [Name, setName] = useState("");
@@ -23,14 +24,14 @@ export default function EditBlog() {
 
   // Load blog data
   useEffect(() => {
-    fetch(`http://localhost:5000/api/blogs/${id}`)
+    fetch(`${API_BASE}/api/blogs/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.Name);
         setDescription(data.Description);
         setCurrentImage(data.Image || null);
         if (data.Image) {
-          setPreview(`http://localhost:5000/uploads/${data.Image}`);
+          setPreview(`${API_BASE}/uploads/${data.Image}`);
         }
       })
       .catch((err) => console.error(err));
@@ -44,7 +45,7 @@ export default function EditBlog() {
     formData.append("Description", Description);
     if (Image) formData.append("Image", Image);
 
-    const res = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+    const res = await fetch(`${API_BASE}/api/blogs/${id}`, {
       method: "PUT",
       body: formData,
     });

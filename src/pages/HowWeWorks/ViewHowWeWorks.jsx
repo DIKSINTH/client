@@ -8,13 +8,14 @@ import {
   FiExternalLink,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewHowWeWorks() {
   const [howweworks, setHowWeWorks] = useState([]);
   const navigate = useNavigate();
 
   const loadHowWeWorks = () => {
-    fetch("http://localhost:5000/api/howweworks")
+    fetch(`${API_BASE}/api/howweworks`)
       .then((res) => res.json())
       .then((data) => setHowWeWorks(data))
       .catch((err) => console.error("Error:", err));
@@ -26,7 +27,7 @@ export default function ViewHowWeWorks() {
 
   const deleteHowWeWork = async (id) => {
     if (!window.confirm("Delete this process step?")) return;
-    const res = await fetch(`http://localhost:5000/api/howweworks/${id}`, {
+    const res = await fetch(`${API_BASE}/api/howweworks/${id}`, {
       method: "DELETE",
     });
     if (res.ok) loadHowWeWorks();
@@ -83,7 +84,7 @@ export default function ViewHowWeWorks() {
                           <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm">
                             {item.Image ? (
                               <img
-                                src={`http://localhost:5000/uploads/${item.Image}`}
+                                src={`${API_BASE}/uploads/${item.Image}`}
                                 className="w-full h-full object-cover"
                                 alt=""
                               />

@@ -8,12 +8,13 @@ import {
   FiActivity,
   FiArrowRight,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api";
 
 export default function ViewWebMaintenance() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/webmaintenance")
+    fetch(`${API_BASE}/api/webmaintenance`)
       .then((res) => res.json())
       .then((res) => setData(res || null))
       .catch((err) => console.log(err));
@@ -109,7 +110,7 @@ export default function ViewWebMaintenance() {
                       {data.Image ? (
                         <div className="h-24 w-36 rounded-2xl overflow-hidden border border-slate-200 shadow-sm transition-transform duration-500 group-hover:scale-105">
                           <img
-                            src={`http://localhost:5000/uploads/${data.Image}`}
+                            src={`${API_BASE}/uploads/${data.Image}`}
                             alt="Web Maintenance"
                             className="w-full h-full object-cover"
                           />

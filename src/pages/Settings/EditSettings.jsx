@@ -13,6 +13,7 @@ import {
   FiLinkedin,
   FiMessageCircle,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditSettings() {
   const [form, setForm] = useState({
@@ -30,7 +31,7 @@ export default function EditSettings() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/settings")
+    fetch(`${API_BASE}/api/settings`)
       .then((res) => res.json())
       .then((data) => {
         setForm({
@@ -52,7 +53,7 @@ export default function EditSettings() {
 
   const updateSettings = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/settings", {
+    await fetch(`${API_BASE}/api/settings`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

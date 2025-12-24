@@ -9,6 +9,7 @@ import {
   FiUploadCloud,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddWhyChooseUs() {
   const [Name, setName] = useState("");
@@ -24,7 +25,7 @@ export default function AddWhyChooseUs() {
     formData.append("Description", Description);
     formData.append("Image", Image);
 
-    const res = await fetch("http://localhost:5000/api/whychooseus", {
+    const res = await fetch(`${API_BASE}/api/whychooseus`, {
       method: "POST",
       body: formData,
     });

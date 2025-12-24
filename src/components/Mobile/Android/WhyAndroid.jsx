@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { CheckCircle } from "lucide-react"; // Icon for the bullet points
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/why-android"; // Must match your Express server URL
+const API_URL = `${API_BASE}/api/why-android`; // Must match your Express server URL
 
 // --- Main Why Android Section Component ---
 const WhyAndroid = () => {

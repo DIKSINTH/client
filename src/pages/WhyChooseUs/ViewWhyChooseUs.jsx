@@ -8,13 +8,14 @@ import {
   FiImage,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api";
 
 export default function ViewWhyChooseUs() {
   const [items, setItems] = useState([]);
   const navigate = useNavigate();
 
   const loadItems = () => {
-    fetch("http://localhost:5000/api/whychooseus")
+    fetch(`${API_BASE}/api/whychooseus`)
       .then((res) => res.json())
       .then((data) => setItems(data))
       .catch((err) => console.error(err));
@@ -26,7 +27,7 @@ export default function ViewWhyChooseUs() {
 
   const deleteItem = async (id) => {
     if (!window.confirm("Delete this item?")) return;
-    const res = await fetch(`http://localhost:5000/api/whychooseus/${id}`, {
+    const res = await fetch(`${API_BASE}/api/whychooseus/${id}`, {
       method: "DELETE",
     });
     if (res.ok) loadItems();
@@ -82,7 +83,7 @@ export default function ViewWhyChooseUs() {
                         <td className="py-6 px-6">
                           <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm">
                             <img
-                              src={`http://localhost:5000/uploads/${item.Image}`}
+                              src={`${API_BASE}/uploads/${item.Image}`}
                               className="w-full h-full object-cover"
                               alt={item.Name}
                               onError={(e) => {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "../css/TechSlider.css";
+import { API_BASE } from "../config/api";
 
-const API_URL = "http://localhost:5000/api/logo-slide";
-const BASE_URL = "http://localhost:5000";
+const API_URL = `${API_BASE}/api/logo-slide`;
 
 const VISIBLE_COUNT = 6;
 
@@ -85,7 +85,7 @@ const TechSlider = () => {
             {logos.map((logo, index) => (
               <div className="slide" key={index}>
                 <img
-                  src={`${BASE_URL}${logo.Image_url}`}
+                  src={`${API_BASE}${logo.Image_url}`}
                   alt="Technology Logo"
                 />
               </div>

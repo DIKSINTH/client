@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-
+import { API_BASE } from "../../../config/api.js";
 const Features = () => {
   const [features, setFeatures] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/visiting-card-features")
+    fetch(`${API_BASE}/api/visiting-card-features`)
       .then((res) => res.json())
       .then((data) => setFeatures(data))
       .catch((err) => console.error("Error fetching features:", err));

@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiImage, FiLayers } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewBlogContent() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/blogcontent")
+    fetch(`${API_BASE}/api/blogcontent`)
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error(err));
@@ -89,7 +90,7 @@ export default function ViewBlogContent() {
                     {data.Image ? (
                       <div className="relative h-24 w-32 rounded-xl overflow-hidden border border-slate-200 shadow-sm">
                         <img
-                          src={`http://localhost:5000/uploads/${data.Image}`}
+                          src={`${API_BASE}/uploads/${data.Image}`}
                           className="w-full h-full object-cover"
                           alt="blog banner"
                         />

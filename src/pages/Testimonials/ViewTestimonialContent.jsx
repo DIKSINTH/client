@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiImage, FiType, FiFileText } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api";
 
 export default function ViewTestimonialContent() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/testimonialcontent")
+    fetch(`${API_BASE}/api/testimonialcontent`)
       .then((res) => res.json())
       .then((data) => setData(data))
       .catch((err) => console.error(err));
@@ -88,7 +89,7 @@ export default function ViewTestimonialContent() {
                 <div className="relative aspect-video rounded-3xl overflow-hidden border-4 border-white shadow-lg shadow-slate-200 ring-1 ring-slate-100">
                   {data.Image ? (
                     <img
-                      src={`http://localhost:5000/uploads/${data.Image}`}
+                      src={`${API_BASE}/uploads/${data.Image}`}
                       className="w-full h-full object-cover"
                       alt="Section Background"
                     />

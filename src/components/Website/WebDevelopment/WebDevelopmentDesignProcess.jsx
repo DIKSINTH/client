@@ -1,9 +1,9 @@
 // DesignProcessSteps.jsx
 import "../../../css/design-process.css";
-
+import { API_BASE } from "../../../config/api.js";
 import React, { useEffect, useState } from "react";
 
-const API_URL = "http://localhost:5000/api/web-development-design-process";
+const API_URL = `${API_BASE}/api/web-development-design-process`;
 
 const Step = ({ text, index }) => {
   const isBlue = index % 2 === 0;

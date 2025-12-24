@@ -9,6 +9,7 @@ import {
   FiImage,
   FiBookOpen,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddBlog() {
   const [Name, setName] = useState("");
@@ -31,7 +32,7 @@ export default function AddBlog() {
     formData.append("Description", Description);
     formData.append("Image", Image);
 
-    const res = await fetch("http://localhost:5000/api/blogs", {
+    const res = await fetch(`${API_BASE}/api/blogs`, {
       method: "POST",
       body: formData,
     });

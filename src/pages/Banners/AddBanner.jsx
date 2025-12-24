@@ -9,6 +9,7 @@ import {
   FiAlignLeft,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddBanner() {
   const [Title, setTitle] = useState("");
@@ -26,7 +27,7 @@ export default function AddBanner() {
     formData.append("Description", Description);
     formData.append("Image", Image);
 
-    const res = await fetch("http://localhost:5000/api/banners", {
+    const res = await fetch(`${API_BASE}/api/banners`, {
       method: "POST",
       body: formData,
     });

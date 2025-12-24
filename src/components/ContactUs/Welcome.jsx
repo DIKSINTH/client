@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../config/api.js";
+// ✅ Backend base URL from .env
 
 const Welcome = () => {
   const [content, setContent] = useState({
@@ -8,7 +10,6 @@ const Welcome = () => {
     Image: "",
   });
 
-  // 🔹 ADDED: form state
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -16,8 +17,9 @@ const Welcome = () => {
     message: "",
   });
 
+  // 🔹 Fetch contact section content
   useEffect(() => {
-    fetch("http://localhost:5000/api/welcome-contact-us")
+    fetch(`${API_BASE}/api/welcome-contact-us`)
       .then((res) => res.json())
       .then((data) => {
         if (data) setContent(data);
@@ -25,17 +27,17 @@ const Welcome = () => {
       .catch((err) => console.error("Error fetching contact data:", err));
   }, []);
 
-  // 🔹 ADDED: handle input change
+  // 🔹 Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // 🔹 ADDED: submit handler (API CALL)
+  // 🔹 Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/send-contact-mail", {
+      const res = await fetch(`${API_BASE}/api/send-contact-mail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -45,7 +47,12 @@ const Welcome = () => {
 
       if (data.success) {
         alert("Message sent successfully!");
-        setFormData({ name: "", phone: "", email: "", message: "" });
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
       } else {
         alert("Email failed to send");
       }
@@ -67,12 +74,12 @@ const Welcome = () => {
       </div>
 
       <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
-        {/* Left Side Image */}
+        {/* IMAGE */}
         <div className="w-full lg:w-1/2 flex justify-center">
           <img
             src={
               content.Image
-                ? `http://localhost:5000/uploads/${content.Image}`
+                ? `${API_BASE}/uploads/${content.Image}`
                 : "https://via.placeholder.com/500x400"
             }
             alt="Contact Illustration"
@@ -80,7 +87,7 @@ const Welcome = () => {
           />
         </div>
 
-        {/* Right Side Form */}
+        {/* FORM */}
         <div className="w-full lg:w-[500px] bg-[#AED9F1] p-6 md:p-8 rounded-sm shadow-sm">
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
@@ -93,7 +100,7 @@ const Welcome = () => {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter Your Full Name"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
+                className="w-full p-2.5 bg-white outline-none text-sm"
                 required
               />
             </div>
@@ -108,7 +115,7 @@ const Welcome = () => {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder="Enter Your Mobile No"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
+                className="w-full p-2.5 bg-white outline-none text-sm"
                 required
               />
             </div>
@@ -123,7 +130,7 @@ const Welcome = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="Enter Your Email"
-                className="w-full p-2.5 bg-white outline-none text-sm focus:ring-2 focus:ring-[#3498db]"
+                className="w-full p-2.5 bg-white outline-none text-sm"
                 required
               />
             </div>
@@ -138,14 +145,14 @@ const Welcome = () => {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder="Write Your Message here..."
-                className="w-full p-2.5 bg-white outline-none text-sm resize-none focus:ring-2 focus:ring-[#3498db]"
+                className="w-full p-2.5 bg-white outline-none text-sm resize-none"
                 required
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="w-full bg-[#3498db] hover:bg-[#3498db] text-white font-bold py-3 uppercase shadow-md"
+              className="w-full bg-[#3498db] text-white font-bold py-3 uppercase shadow-md"
             >
               SUBMIT
             </button>

@@ -2,6 +2,7 @@ import DashboardLayout from "../../layout/DashboardLayout";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FiEdit2, FiMail, FiPhone, FiMapPin, FiSettings } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewSettings() {
   const [data, setData] = useState({});
@@ -10,7 +11,7 @@ export default function ViewSettings() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/settings")
+    fetch(`${API_BASE}/api/settings`)
       .then((res) => res.json())
       .then((data) => {
         setData(data || {});

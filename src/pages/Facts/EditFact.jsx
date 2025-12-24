@@ -9,6 +9,7 @@ import {
   FiUploadCloud,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditFact() {
   const { id } = useParams();
@@ -19,12 +20,12 @@ export default function EditFact() {
   const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/facts/${id}`)
+    fetch(`${API_BASE}/api/facts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.Name);
         setCount(data.Count);
-        setPreview(`http://localhost:5000/uploads/${data.Image}`);
+        setPreview(`${API_BASE}/uploads/${data.Image}`);
       });
   }, [id]);
 
@@ -35,7 +36,7 @@ export default function EditFact() {
     fd.append("Count", Count);
     if (Image) fd.append("Image", Image);
 
-    fetch(`http://localhost:5000/api/facts/update/${id}`, {
+    fetch(`${API_BASE}/api/facts/update/${id}`, {
       method: "PUT",
       body: fd,
     })

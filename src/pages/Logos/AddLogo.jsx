@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiArrowLeft, FiUploadCloud, FiPlus, FiImage } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddLogo() {
   const [image, setImage] = useState(null);
@@ -19,7 +20,7 @@ export default function AddLogo() {
     const formData = new FormData();
     formData.append("logo", image);
 
-    fetch("http://localhost:5000/api/logos/add", {
+    fetch(`${API_BASE}/api/logos/add`, {
       method: "POST",
       body: formData,
     })

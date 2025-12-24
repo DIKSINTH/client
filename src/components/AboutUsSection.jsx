@@ -1,7 +1,8 @@
 // AboutUsSection.jsx
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/about-content"; // Your backend endpoint
+const API_URL = `${API_BASE}/api/about-content`;
 
 const AboutUsSection = () => {
   const [data, setData] = useState({ Scroll_Content: "", About: "" });

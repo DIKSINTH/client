@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/welcome-web-maintenance";
+const API_URL = `${API_BASE}/api/welcome-web-maintenance`;
 
 // Helper function to get backend image path
 const getImagePath = (filename) => {
   if (!filename) return "";
-  return `http://localhost:5000/uploads/${filename}`;
+  return `${API_BASE}/uploads/${filename}`;
 };
 
 const Welcome = () => {

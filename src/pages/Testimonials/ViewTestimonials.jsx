@@ -8,13 +8,14 @@ import {
   FiMessageSquare,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api";
 
 export default function ViewTestimonials() {
   const [testimonials, setTestimonials] = useState([]);
   const navigate = useNavigate();
 
   const loadTestimonials = () => {
-    fetch("http://localhost:5000/api/testimonials")
+    fetch(`${API_BASE}/api/testimonials`)
       .then((res) => res.json())
       .then((data) => setTestimonials(data))
       .catch((err) => console.error("Error loading testimonials:", err));
@@ -27,7 +28,7 @@ export default function ViewTestimonials() {
   const deleteTestimonial = async (id) => {
     if (!window.confirm("Are you sure you want to delete this testimonial?"))
       return;
-    const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+    const res = await fetch(`${API_BASE}/api/testimonials/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
@@ -88,7 +89,7 @@ export default function ViewTestimonials() {
                             <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-sm ring-1 ring-slate-100 flex-shrink-0">
                               {t.image ? (
                                 <img
-                                  src={`http://localhost:5000/uploads/${t.image}`}
+                                  src={`${API_BASE}/uploads/${t.image}`}
                                   className="w-full h-full object-cover"
                                   alt={t.name}
                                 />

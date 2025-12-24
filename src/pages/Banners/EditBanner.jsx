@@ -9,6 +9,7 @@ import {
   FiAlignLeft,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditBanner() {
   const [Title, setTitle] = useState("");
@@ -21,13 +22,13 @@ export default function EditBanner() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/banners/${id}`)
+    fetch(`${API_BASE}/api/banners/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.Title);
         setDescription(data.Description);
         setCurrentImage(data.Image);
-        setPreview(`http://localhost:5000/uploads/${data.Image}`);
+        setPreview(`${API_BASE}/uploads/${data.Image}`);
       })
       .catch((err) => console.error(err));
   }, [id]);
@@ -39,7 +40,7 @@ export default function EditBanner() {
     formData.append("Description", Description);
     if (Image) formData.append("Image", Image);
 
-    const res = await fetch(`http://localhost:5000/api/banners/${id}`, {
+    const res = await fetch(`${API_BASE}/api/banners/${id}`, {
       method: "PUT",
       body: formData,
     });

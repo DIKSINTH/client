@@ -9,6 +9,7 @@ import {
   FiLink,
   FiLayers,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditService() {
   const [Name, setName] = useState("");
@@ -22,15 +23,13 @@ export default function EditService() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/services/${id}`)
+    fetch(`${API_BASE}/api/services/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.Name);
         setDescription(data.Description);
         setURL_Link(data.URL);
-        setPreview(
-          data.Image ? `http://localhost:5000/uploads/${data.Image}` : ""
-        );
+        setPreview(data.Image ? `${API_BASE}/uploads/${data.Image}` : "");
         setLoading(false);
       });
   }, [id]);
@@ -43,7 +42,7 @@ export default function EditService() {
     formData.append("URL", URL_Link);
     if (Image) formData.append("Image", Image);
 
-    const res = await fetch(`http://localhost:5000/api/services/${id}`, {
+    const res = await fetch(`${API_BASE}/api/services/${id}`, {
       method: "PUT",
       body: formData,
     });

@@ -1,8 +1,9 @@
 // WebDesignCTA.jsx
 
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/web-development-end"; // Must match your Express server URL
+const API_URL = `${API_BASE}/api/web-development-end`; // Must match your Express server URL
 
 // --- Main Web Design CTA Component ---
 const WebDesignEnd = () => {

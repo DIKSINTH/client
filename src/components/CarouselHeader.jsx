@@ -1,10 +1,11 @@
 // CarouselHeader.jsx
 import React, { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/slides";
+const API_URL = `${API_BASE}/api/slides`;
 
-const getImagePath = (url) => `http://localhost:5000/uploads/${url}`;
+const getImagePath = (url) => `${API_BASE}/uploads/${url}`;
 
 const Slide = ({ slide, isActive }) => {
   return (

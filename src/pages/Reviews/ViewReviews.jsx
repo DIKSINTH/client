@@ -8,13 +8,14 @@ import {
   FiUser,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewReviews() {
   const [reviews, setReviews] = useState([]);
   const navigate = useNavigate();
 
   const loadReviews = () => {
-    fetch("http://localhost:5000/api/reviews")
+    fetch(`${API_BASE}/api/reviews`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
       .catch((err) => console.error("Error loading reviews:", err));
@@ -26,7 +27,7 @@ export default function ViewReviews() {
 
   const deleteReview = async (id) => {
     if (!window.confirm("Delete this review?")) return;
-    const res = await fetch(`http://localhost:5000/api/reviews/${id}`, {
+    const res = await fetch(`${API_BASE}/api/reviews/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {

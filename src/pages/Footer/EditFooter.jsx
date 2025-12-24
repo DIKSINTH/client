@@ -8,6 +8,7 @@ import {
   FiList,
   FiAlignLeft,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditFooter() {
   const [form, setForm] = useState({
@@ -25,7 +26,7 @@ export default function EditFooter() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/footer")
+    fetch(`${API_BASE}/api/footer`)
       .then((res) => res.json())
       .then((data) => setForm(data));
   }, []);
@@ -35,7 +36,7 @@ export default function EditFooter() {
 
   const updateFooter = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/footer", {
+    await fetch(`${API_BASE}/api/footer`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

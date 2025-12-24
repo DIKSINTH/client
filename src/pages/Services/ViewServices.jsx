@@ -8,13 +8,14 @@ import {
   FiLayers,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewServices() {
   const [services, setServices] = useState([]);
   const navigate = useNavigate();
 
   const loadServices = () => {
-    fetch("http://localhost:5000/api/services")
+    fetch(`${API_BASE}/api/services`)
       .then((res) => res.json())
       .then((data) => setServices(data))
       .catch((err) => console.error("Error loading services:", err));
@@ -27,7 +28,7 @@ export default function ViewServices() {
   const deleteService = async (id) => {
     if (!window.confirm("Are you sure you want to delete this service?"))
       return;
-    const res = await fetch(`http://localhost:5000/api/services/${id}`, {
+    const res = await fetch(`${API_BASE}/api/services/${id}`, {
       method: "DELETE",
     });
     if (res.ok) {
@@ -89,7 +90,7 @@ export default function ViewServices() {
                           <div className="w-16 h-16 rounded-2xl overflow-hidden bg-slate-100 border border-slate-100 shadow-sm flex-shrink-0">
                             {service.Image ? (
                               <img
-                                src={`http://localhost:5000/uploads/${service.Image}`}
+                                src={`${API_BASE}/uploads/${service.Image}`}
                                 className="w-full h-full object-cover"
                                 alt=""
                               />

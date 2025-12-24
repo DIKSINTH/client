@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/why-ios";
+const API_URL = `${API_BASE}/api/why-ios`;
 
 const WhyIos = () => {
   const [points, setPoints] = useState([]);

@@ -1,12 +1,13 @@
 // HowWeWorksList.jsx
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/fact-lists";
+const API_URL = `${API_BASE}/api/fact-lists`;
 
 // Helper function to get the image path
 const getImagePath = (filename) => {
   if (!filename) return "";
-  return `http://localhost:5000/uploads/${filename}`;
+  return `${API_BASE}/uploads/${filename}`;
 };
 
 // --- Single Point Card Component ---

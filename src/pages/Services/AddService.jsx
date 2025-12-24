@@ -9,6 +9,7 @@ import {
   FiType,
   FiLayers,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddService() {
   const [Name, setName] = useState("");
@@ -33,7 +34,7 @@ export default function AddService() {
       formData.append("URL", URL);
       formData.append("Image", Image);
 
-      const res = await fetch("http://localhost:5000/api/services", {
+      const res = await fetch(`${API_BASE}/api/services`, {
         method: "POST",
         body: formData,
       });

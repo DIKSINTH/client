@@ -8,13 +8,14 @@ import {
   FiMoreHorizontal,
 } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewBanners() {
   const [banners, setBanners] = useState([]);
   const navigate = useNavigate();
 
   const loadBanners = () => {
-    fetch("http://localhost:5000/api/banners")
+    fetch(`${API_BASE}/api/banners`)
       .then((res) => res.json())
       .then((data) => setBanners(data))
       .catch((err) => console.error("Error loading banners:", err));
@@ -27,7 +28,7 @@ export default function ViewBanners() {
   const deleteBanner = async (id) => {
     if (!window.confirm("Are you sure you want to delete this banner?")) return;
 
-    const res = await fetch(`http://localhost:5000/api/banners/${id}`, {
+    const res = await fetch(`${API_BASE}/api/banners/${id}`, {
       method: "DELETE",
     });
 
@@ -115,7 +116,7 @@ export default function ViewBanners() {
                           {banner.Image ? (
                             <div className="relative w-24 h-14 rounded-xl overflow-hidden shadow-sm border border-white">
                               <img
-                                src={`http://localhost:5000/uploads/${banner.Image}`}
+                                src={`${API_BASE}/uploads/${banner.Image}`}
                                 alt="Banner"
                                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                               />

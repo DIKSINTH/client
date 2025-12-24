@@ -8,12 +8,13 @@ import {
   FiEye,
   FiExternalLink,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewLogoDesign() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/logodesign")
+    fetch(`${API_BASE}/api/logodesign`)
       .then((res) => res.json())
       .then((res) => setData(res))
       .catch((err) => console.log(err));
@@ -51,7 +52,7 @@ export default function ViewLogoDesign() {
                     {data.Image ? (
                       <div className="relative">
                         <img
-                          src={`http://localhost:5000/uploads/${data.Image}`}
+                          src={`${API_BASE}/uploads/${data.Image}`}
                           className="w-full max-w-sm rounded-2xl shadow-lg border-4 border-white transform transition-transform group-hover:rotate-1 group-hover:scale-[1.02]"
                           alt="Logo Design Preview"
                         />

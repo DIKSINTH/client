@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiBarChart2, FiHash } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewFacts() {
   const [facts, setFacts] = useState([]);
   const navigate = useNavigate();
 
   const loadFacts = () => {
-    fetch("http://localhost:5000/api/facts")
+    fetch(`${API_BASE}/api/facts`)
       .then((res) => res.json())
       .then((data) => setFacts(data));
   };
@@ -69,7 +70,7 @@ export default function ViewFacts() {
                       <td className="py-6 px-6">
                         <div className="w-14 h-14 rounded-2xl bg-white border border-slate-100 shadow-sm p-2 flex items-center justify-center">
                           <img
-                            src={`http://localhost:5000/uploads/${fact.Image}`}
+                            src={`${API_BASE}/uploads/${fact.Image}`}
                             className="max-h-full object-contain"
                             alt=""
                           />

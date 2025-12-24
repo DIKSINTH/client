@@ -9,6 +9,7 @@ import {
   FiUploadCloud,
   FiImage,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api";
 
 export default function EditWhyChooseUs() {
   const [Name, setName] = useState("");
@@ -21,13 +22,13 @@ export default function EditWhyChooseUs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/whychooseus/${id}`)
+    fetch(`${API_BASE}/api/whychooseus/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.Name);
         setDescription(data.Description);
         setCurrentImage(data.Image);
-        setPreview(`http://localhost:5000/uploads/${data.Image}`);
+        setPreview(`${API_BASE}/uploads/${data.Image}`);
       });
   }, [id]);
 
@@ -38,7 +39,7 @@ export default function EditWhyChooseUs() {
     formData.append("Description", Description);
     if (Image) formData.append("Image", Image);
 
-    const res = await fetch(`http://localhost:5000/api/whychooseus/${id}`, {
+    const res = await fetch(`${API_BASE}/api/whychooseus/${id}`, {
       method: "PUT",
       body: formData,
     });

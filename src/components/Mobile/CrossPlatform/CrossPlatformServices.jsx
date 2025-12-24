@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/cross-platform-services";
+const API_URL = `${API_BASE}/api/cross-platform-services`;
 
 const CrossPlatformServices = () => {
   const [services, setServices] = useState([]);

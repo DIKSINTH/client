@@ -1,12 +1,13 @@
 // WelcomeSection.jsx
 import React, { useEffect, useState } from "react";
 import { CheckCircle } from "lucide-react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/welcome-about-us";
+const API_URL = `${API_BASE}/api/welcome-about-us`;
 
 const getImagePath = (filename) => {
   if (!filename) return "";
-  return `http://localhost:5000${filename}`;
+  return `${API_BASE}${filename}`;
 };
 
 const WelcomeAboutUs = () => {

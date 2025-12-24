@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiTrash2, FiPlus, FiImage, FiFileText } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewBlogs() {
   const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
 
   const loadBlogs = () => {
-    fetch("http://localhost:5000/api/blogs")
+    fetch(`${API_BASE}/api/blogs`)
       .then((res) => res.json())
       .then((data) => setBlogs(data))
       .catch((err) => console.error("Error loading blogs:", err));
@@ -21,7 +22,7 @@ export default function ViewBlogs() {
   const deleteBlog = async (id) => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
 
-    const res = await fetch(`http://localhost:5000/api/blogs/${id}`, {
+    const res = await fetch(`${API_BASE}/api/blogs/${id}`, {
       method: "DELETE",
     });
 
@@ -89,7 +90,7 @@ export default function ViewBlogs() {
                         <div className="h-14 w-14 rounded-lg overflow-hidden border border-slate-200 bg-slate-50 flex-shrink-0">
                           {blog.Image ? (
                             <img
-                              src={`http://localhost:5000/uploads/${blog.Image}`}
+                              src={`${API_BASE}/uploads/${blog.Image}`}
                               alt="Blog"
                               className="h-full w-full object-cover"
                             />

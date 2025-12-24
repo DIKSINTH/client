@@ -11,6 +11,7 @@ import {
   FiActivity,
   FiAlignLeft,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditWebDesign() {
   const [form, setForm] = useState({
@@ -36,12 +37,12 @@ export default function EditWebDesign() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/webdesign/edit")
+    fetch(`${API_BASE}/api/webdesign/edit`)
       .then((res) => res.json())
       .then((res) => {
         setForm(res);
         setOldImage(res.Image);
-        setPreviewImage(`http://localhost:5000/uploads/${res.Image}`);
+        setPreviewImage(`${API_BASE}/uploads/${res.Image}`);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -66,7 +67,7 @@ export default function EditWebDesign() {
       fd.append("Image", imageRef.current.files[0]);
     }
 
-    const response = await fetch("http://localhost:5000/api/webdesign/update", {
+    const response = await fetch(`${API_BASE}/api/webdesign/update`, {
       method: "POST",
       body: fd,
     });

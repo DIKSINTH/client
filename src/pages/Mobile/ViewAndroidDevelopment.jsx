@@ -8,12 +8,13 @@ import {
   FiArrowRight,
   FiInfo,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewAndroidDevelopment() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/androiddevelopment")
+    fetch(`${API_BASE}/api/androiddevelopment`)
       .then((res) => res.json())
       .then((res) => setData(res || null))
       .catch((err) => console.log(err));
@@ -75,7 +76,7 @@ export default function ViewAndroidDevelopment() {
                       <div className="relative w-48 h-28 overflow-hidden rounded-2xl border-4 border-white shadow-md group-hover:shadow-emerald-200/50 transition-all">
                         {data.Image ? (
                           <img
-                            src={`http://localhost:5000/uploads/${data.Image}`}
+                            src={`${API_BASE}/uploads/${data.Image}`}
                             alt="Android Development"
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />

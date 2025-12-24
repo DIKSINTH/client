@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/web-maintenance-end";
+const API_URL = `${API_BASE}/api/web-maintenance-end`;
 
 const WebMaintenanceEnd = () => {
   const [content, setContent] = useState({

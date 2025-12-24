@@ -1,8 +1,9 @@
 // OurValues.jsx
 import React, { useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/our-values";
+const API_URL = `${API_BASE}/api/our-values`;
 
 /* ---------------- HEXAGON ---------------- */
 const Hexagon = ({ text, side }) => {

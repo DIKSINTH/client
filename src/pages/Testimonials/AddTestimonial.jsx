@@ -9,6 +9,7 @@ import {
   FiBriefcase,
   FiMessageSquare,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddTestimonial() {
   const [name, setName] = useState("");
@@ -26,7 +27,7 @@ export default function AddTestimonial() {
     formData.append("description", description);
     if (image) formData.append("image", image);
 
-    const res = await fetch("http://localhost:5000/api/testimonials", {
+    const res = await fetch(`${API_BASE}/api/testimonials`, {
       method: "POST",
       body: formData,
     });

@@ -10,6 +10,7 @@ import {
   FiPlus,
   FiCheckCircle,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditCrossPlatform() {
   const [form, setForm] = useState({
@@ -41,12 +42,12 @@ export default function EditCrossPlatform() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/crossplatform/edit")
+    fetch(`${API_BASE}/api/crossplatform/edit`)
       .then((res) => res.json())
       .then((res) => {
         setForm(res);
         setOldImage(res.Image);
-        setPreviewImage(`http://localhost:5000/uploads/${res.Image}`);
+        setPreviewImage(`${API_BASE}/uploads/${res.Image}`);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -68,13 +69,10 @@ export default function EditCrossPlatform() {
     if (imageRef.current.files[0])
       fd.append("Image", imageRef.current.files[0]);
 
-    const response = await fetch(
-      "http://localhost:5000/api/crossplatform/update",
-      {
-        method: "POST",
-        body: fd,
-      }
-    );
+    const response = await fetch(`${API_BASE}/api/crossplatform/update`, {
+      method: "POST",
+      body: fd,
+    });
     await response.json();
     alert("Updated Successfully!");
     navigate("/dashboard/view-crossplatform");

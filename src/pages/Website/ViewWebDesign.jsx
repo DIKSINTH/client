@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiMonitor, FiImage, FiExternalLink } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ViewWebDesign() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/webdesign")
+    fetch(`${API_BASE}/api/webdesign`)
       .then((res) => res.json())
       .then((res) => setData(res || null))
       .catch((err) => console.log(err));
@@ -87,7 +88,7 @@ export default function ViewWebDesign() {
                       {data.Image ? (
                         <div className="relative group cursor-zoom-in">
                           <img
-                            src={`http://localhost:5000/uploads/${data.Image}`}
+                            src={`${API_BASE}/uploads/${data.Image}`}
                             alt="Web Design"
                             className="w-28 h-20 object-cover rounded-xl shadow-sm border border-slate-200 group-hover:shadow-md transition-shadow"
                           />

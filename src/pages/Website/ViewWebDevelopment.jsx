@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiEdit2, FiCode, FiImage, FiCheckCircle } from "react-icons/fi";
+import { API_BASE } from "../../config/api";
 
 export default function ViewWebDevelopment() {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/webdevelopment")
+    fetch(`${API_BASE}/api/webdevelopment`)
       .then((res) => res.json())
       .then((res) => setData(res || null))
       .catch((err) => console.log(err));
@@ -93,7 +94,7 @@ export default function ViewWebDevelopment() {
                       {data.Image ? (
                         <div className="h-20 w-32 rounded-xl overflow-hidden border border-slate-200 shadow-sm transition-transform duration-300 group-hover:scale-105">
                           <img
-                            src={`http://localhost:5000/uploads/${data.Image}`}
+                            src={`${API_BASE}/uploads/${data.Image}`}
                             alt="Web Development"
                             className="w-full h-full object-cover"
                           />

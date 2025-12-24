@@ -1,12 +1,13 @@
 // OurServices.jsx
 
 import React, { useState, useEffect } from "react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/services-list";
+const API_URL = `${API_BASE}/api/services-list`;
 
 const getImagePath = (image) => {
   if (!image) return "";
-  return `http://localhost:5000/uploads/${image}`;
+  return `${API_BASE}/uploads/${image}`;
 };
 
 // Single service card

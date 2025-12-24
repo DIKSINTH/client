@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate } from "react-router-dom";
 import { FiEdit2, FiImage } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function ContactUs() {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/contactus")
+    fetch(`${API_BASE}/api/contactus`)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, []);
@@ -65,7 +66,7 @@ export default function ContactUs() {
                     <div className="flex justify-center">
                       {data.Image ? (
                         <img
-                          src={`http://localhost:5000/uploads/${data.Image}`}
+                          src={`${API_BASE}/uploads/${data.Image}`}
                           className="w-16 h-16 object-cover rounded-xl border border-slate-200 shadow-sm"
                           alt="contact"
                         />

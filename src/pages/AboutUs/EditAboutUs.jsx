@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate } from "react-router-dom";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditAboutUs() {
   const [form, setForm] = useState({
@@ -19,7 +20,7 @@ export default function EditAboutUs() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/aboutus")
+    fetch(`${API_BASE}/api/aboutus`)
       .then((res) => res.json())
       .then((data) => {
         setForm({
@@ -33,7 +34,7 @@ export default function EditAboutUs() {
           Value3: data.Value3 || "",
           Value4: data.Value4 || "",
         });
-        if (data.Image) setPreview(`http://localhost:5000${data.Image}`);
+        if (data.Image) setPreview(`${API_BASE}${data.Image}`);
       });
   }, []);
 
@@ -46,7 +47,7 @@ export default function EditAboutUs() {
     Object.keys(form).forEach((key) => formData.append(key, form[key]));
     if (image) formData.append("Image", image);
 
-    await fetch("http://localhost:5000/api/aboutus", {
+    await fetch(`${API_BASE}/api/aboutus`, {
       method: "PUT",
       body: formData,
     });

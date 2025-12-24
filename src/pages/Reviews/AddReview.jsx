@@ -2,6 +2,7 @@ import { useState } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useNavigate, Link } from "react-router-dom";
 import { FiArrowLeft, FiPlus, FiUser, FiMessageCircle } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function AddReview() {
   const [Name, setName] = useState("");
@@ -10,7 +11,7 @@ export default function AddReview() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:5000/api/reviews", {
+    const res = await fetch(`${API_BASE}/api/reviews`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ Name, Review }),

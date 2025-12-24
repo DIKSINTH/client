@@ -10,6 +10,7 @@ import {
   FiActivity,
   FiPieChart,
 } from "react-icons/fi";
+import { API_BASE } from "../config/api";
 
 export default function Dashboard() {
   const [date, setDate] = useState(new Date());
@@ -22,7 +23,7 @@ export default function Dashboard() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/dashboard-counts/counts")
+    fetch(`${API_BASE}/api/dashboard-counts/counts`)
       .then((res) => res.json())
       .then((data) => setCounts(data))
       .catch((err) => console.error("Dashboard count error:", err));

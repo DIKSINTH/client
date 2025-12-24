@@ -10,8 +10,9 @@ import {
   Mail as MailIcon,
   Smartphone,
 } from "lucide-react";
+import { API_BASE } from "../config/api.js";
 
-const API_URL = "http://localhost:5000/api/footer-data";
+const API_URL = `${API_BASE}/api/footer-data`;
 
 const FooterList = () => {
   const [data, setData] = useState(null);

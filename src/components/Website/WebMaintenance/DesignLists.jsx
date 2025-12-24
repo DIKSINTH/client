@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from "react";
 // import { motion } from "framer-motion";
 import { motion } from "framer-motion";
+import { API_BASE } from "../../../config/api";
 
-const API_URL = "http://localhost:5000/api/web-maintenance-design-lists";
+const API_URL = `${API_BASE}/api/web-maintenance-design-lists`;
 
 // Directions for each ball animation
 const directions = [

@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "../../../css/Mobile.css";
+import { API_BASE } from "../../../config/api.js";
 
-const API_URL = "http://localhost:5000/api/welcome-logo-design";
+const API_URL = `${API_BASE}/api/welcome-logo-design`;
 
 const getImagePath = (filename) => {
   if (!filename) return "/placeholder.png";
-  return `http://localhost:5000/uploads/${filename}`;
+  return `${API_BASE}/uploads/${filename}`;
 };
 
 const Welcome = () => {

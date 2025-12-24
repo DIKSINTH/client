@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { FiArrowLeft, FiUploadCloud, FiImage, FiSave } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditLogo() {
   const { id } = useParams();
@@ -11,12 +12,12 @@ export default function EditLogo() {
 
   useEffect(() => {
     // Fetch the specific logo data
-    fetch(`http://localhost:5000/api/logos/${id}`)
+    fetch(`${API_BASE}/api/logos/${id}`)
       .then((res) => res.json())
       .then((data) => {
         // Check if data exists and use the correct property name (Image)
         if (data && data.Image) {
-          setPreview(`http://localhost:5000/uploads/${data.Image}`);
+          setPreview(`${API_BASE}/uploads/${data.Image}`);
         }
       })
       .catch((err) => console.error("Error fetching logo:", err));
@@ -29,7 +30,7 @@ export default function EditLogo() {
     // Use the key "logo" to match your backend's expected field name
     if (image) formData.append("logo", image);
 
-    fetch(`http://localhost:5000/api/logos/update/${id}`, {
+    fetch(`${API_BASE}/api/logos/update/${id}`, {
       method: "PUT",
       body: formData,
     })

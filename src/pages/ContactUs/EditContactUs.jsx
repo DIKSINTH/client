@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import DashboardLayout from "../../layout/DashboardLayout";
 import { useParams, useNavigate } from "react-router-dom";
 import { FiArrowLeft, FiSave, FiUploadCloud, FiImage } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditContactUs() {
   const { id } = useParams();
@@ -13,12 +14,12 @@ export default function EditContactUs() {
   const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/contactus")
+    fetch(`${API_BASE}/api/contactus`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.Title);
         setSubTitle(data.Sub_Title);
-        setPreview(`http://localhost:5000/uploads/${data.Image}`);
+        setPreview(`${API_BASE}/uploads/${data.Image}`);
       });
   }, []);
 
@@ -30,7 +31,7 @@ export default function EditContactUs() {
     form.append("Sub_Title", Sub_Title);
     if (Image) form.append("image", Image);
 
-    await fetch(`http://localhost:5000/api/contactus/update/${id}`, {
+    await fetch(`${API_BASE}/api/contactus/update/${id}`, {
       method: "PUT",
       body: form,
     });

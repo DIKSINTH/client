@@ -8,6 +8,7 @@ import {
   FiUser,
   FiBriefcase,
 } from "react-icons/fi";
+import { API_BASE } from "../../config/api.js";
 
 export default function EditTestimonial() {
   const [name, setName] = useState("");
@@ -22,16 +23,14 @@ export default function EditTestimonial() {
   const { id } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/testimonials/${id}`)
+    fetch(`${API_BASE}/api/testimonials/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setName(data.name || "");
         setPosition(data.position || "");
         setDescription(data.description || "");
         setCurrentImage(data.image || null);
-        setPreview(
-          data.image ? `http://localhost:5000/uploads/${data.image}` : ""
-        );
+        setPreview(data.image ? `${API_BASE}/uploads/${data.image}` : "");
         setLoading(false);
       });
   }, [id]);
@@ -44,7 +43,7 @@ export default function EditTestimonial() {
     formData.append("description", description);
     if (image) formData.append("image", image);
 
-    const res = await fetch(`http://localhost:5000/api/testimonials/${id}`, {
+    const res = await fetch(`${API_BASE}/api/testimonials/${id}`, {
       method: "PUT",
       body: formData,
     });
